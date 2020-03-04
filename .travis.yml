@@ -3,6 +3,9 @@ node_js: "12"
 branches:
   only:
     - master
+    - matty
+    - shebly
+    - liliana
 cache:
   directories:
     - node_modules
