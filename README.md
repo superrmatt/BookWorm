@@ -1,4 +1,4 @@
 # BookWorm
 
-Application that allows user to view books like an online library.
+Application that allows user to view books like an online library. <br>
 Under construction.
