@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "ahzyt8d1n58u915i",
-    "database": "bookworm_db",
+    "database": "pvyuibmi89xv7jwu",
     "host": "q3vtafztappqbpzn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
