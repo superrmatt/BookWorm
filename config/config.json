@@ -1,21 +1,18 @@
 {
   "development": {
     "username": "ahzyt8d1n58u915i",
-    "password": "vfst1zllilpp0g5i",
     "database": "bookworm_db",
     "host": "q3vtafztappqbpzn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
     "username": "",
-    "password": "",
     "database": "",
     "host": "",
     "dialect": "mysql"
   },
   "production": {
     "username": "",
-    "password": "" ,
     "database": "",
     "host": "",
     "dialect": "mysql"
