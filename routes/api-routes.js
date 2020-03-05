@@ -18,7 +18,7 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     })
-      .then(db.userBook.sync(req.body.email))
+      .then(db.userBook.sync())
       .then(function() {
         res.redirect(307, "/api/login");
       })
