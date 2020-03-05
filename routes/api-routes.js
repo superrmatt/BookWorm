@@ -28,7 +28,7 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/addnew/ :title", function(req, res) {
+  app.post("/api/addnew/:title", function(req, res) {
     db.userBook
       .create({
         userID: req.body.userID,
@@ -36,6 +36,17 @@ module.exports = function(app) {
         author: req.body.author,
         isRead: false
       })
+      .then(function() {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+
+  app.put("/api/changeread/:id", function(req, res) {
+    db.userBook
+      .update({ isRead: req.body.isRead }, { where: req.params.bookId })
       .then(function() {
         res.redirect(307, "/api/login");
       })

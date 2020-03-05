@@ -17,7 +17,7 @@ $(document).ready(function() {
       method: "GET",
       success: function(data) {
         for (var i = 0; i < data.items.length; i++) {
-          memberList.append("<input type=\"checkbox\" id=\"title\"" + i + "><label for=\"title\"" + i + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+          memberList.append("<input type=\"radio\" id=\"title\"" + i + "><label for=\"title\"" + i + "\">" + data.items[i].volumeInfo.title + "</label><br>");
         }
         newBookSection.append("<button class=\"update-database\">Add Selected</button>");
 
