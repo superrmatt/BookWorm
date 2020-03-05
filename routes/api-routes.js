@@ -18,7 +18,24 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     })
+      //if first user we need to create userBook DB
       .then(db.userBook.sync())
+      .then(function() {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
+
+  app.post("/api/addnew/ :title", function(req, res) {
+    db.userBook
+      .create({
+        userID: req.body.userID,
+        title: req.body.title,
+        author: req.body.author,
+        isRead: false
+      })
       .then(function() {
         res.redirect(307, "/api/login");
       })
