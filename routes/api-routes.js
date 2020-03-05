@@ -27,20 +27,13 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/addnew", function(req, res) {
-    db.userBook
-      .create({
-        userID: req.body.userID,
-        title: req.body.title,
-        author: req.body.author,
-        isRead: false
-      })
-      .then(function() {
-        res.redirect(307, "/api/login");
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
+  app.post("/api/addnew", function(req) {
+    db.userBook.create({
+      userID: req.body.userID,
+      title: req.body.title,
+      author: req.body.author,
+      isRead: false
+    });
   });
 
   app.put("/api/changeread/:id", function(req, res) {
