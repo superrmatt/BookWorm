@@ -1,4 +1,3 @@
-models/index.js
 node_modules
 package.json
 package-lock.json
@@ -6,3 +5,4 @@ README.md
 .gitignore
 .eslint.json
 .travis.yml
+public/js/members.js
