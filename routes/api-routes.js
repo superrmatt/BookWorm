@@ -19,7 +19,6 @@ module.exports = function(app) {
       password: req.body.password
     })
       //if first user we need to create userBook DB
-      .then(db.userBook.sync())
       .then(function() {
         res.redirect(307, "/api/login");
       })
@@ -28,7 +27,7 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/addnew/:title", function(req, res) {
+  app.post("/api/addnew", function(req, res) {
     db.userBook
       .create({
         userID: req.body.userID,
@@ -46,7 +45,7 @@ module.exports = function(app) {
 
   app.put("/api/changeread/:id", function(req, res) {
     db.userBook
-      .update({ isRead: req.body.isRead }, { where: req.params.bookId })
+      .update({ isRead: req.body.isRead }, { where: id })
       .then(function() {
         res.redirect(307, "/api/login");
       })

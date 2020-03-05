@@ -9,6 +9,8 @@ $(document).ready(function() {
   });
 
   $(".add-new").click(function() {
+    memberList.empty();
+    $(".update-database").remove();
     var title = $("#book-name").val();
     console.log("query = https://www.googleapis.com/books/v1/volumes?q=" + title);
 
