@@ -6,6 +6,6 @@ module.exports = function(sequelize, DataTypes) {
     author: DataTypes.STRING,
     isRead: DataTypes.BOOLEAN
   });
-
+  
   return userBook;
 };
