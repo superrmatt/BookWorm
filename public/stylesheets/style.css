@@ -1,4 +1,4 @@
- form.signup,
+form.signup,
 form.login {
   margin-top: 50px;
 } 
@@ -124,10 +124,23 @@ form.login {
 }
 
 .jumbotron, #loginDiv, #signUpDiv{
+  margin-top: 100px;
   box-shadow: 5px 5px 8px gray;
+  text-align: center;
 }
+
 .index { background-color: rgb(224, 217, 217);
 }
+
 .navbar { background-color: teal;
 }
 
+a:hover { background-image:url("worm.png");
+          background-repeat: no-repeat;
+}
+
+.btn {  margin:5px;
+}
+
+h1 { font-family:'Shadows Into Light', cursive;
+  }
