@@ -7,7 +7,7 @@ var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
-var password = require(__dirname + "/../config/password")
+var password = require(__dirname + "/../config/password");
 config.password = password;
 
 if (config.use_env_variable) {
