@@ -26,18 +26,16 @@ $(document).ready(function() {
           e.preventDefault();
           var thisBookIndex = $("input:Checked").attr("id");
           thisBookIndex = thisBookIndex.replace(/\D/g,''); //parse to return just the number
-          var userID = 1; //not sure how to get this yet. hard set to 0 as mpdambra@gmail.com for now.
           var newTitle = $("input:checked").val();
           var author = data.items[thisBookIndex].volumeInfo.authors[0];
 
           console.log("---------------NEW BOOK!!---------------")
-          console.log("userID = " + userID);
           console.log("thisBookIndex = " + thisBookIndex);
           console.log("newTitle = " + newTitle);
           console.log("author = " + author);
           
           
-          addBook(userID, newTitle, author);
+          addBook(newTitle, author);
           $("#title" + thisBookIndex).remove() //now remove those html elements
           $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
         });
@@ -45,9 +43,8 @@ $(document).ready(function() {
     });
   });
 
-  function addBook(userID, title, author){
+  function addBook(title, author){
     $.post("/api/addnew", {
-      userID: userID,
       title: title,
       author: author
     })
