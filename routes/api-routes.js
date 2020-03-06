@@ -39,9 +39,9 @@ module.exports = function(app) {
 
   app.put("/api/changeread/:id", function(req, res) {
     db.userBook
-      .update({ isRead: req.body.isRead }, { where: id })
+      .update({ isRead: req.body.isRead }, { where: req.params.id })
       .then(function() {
-        res.redirect(307, "/api/login");
+         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
         res.status(401).json(err);
