@@ -29,18 +29,20 @@ module.exports = function(app) {
 
   app.post("/api/addnew", function(req) {
     db.userBook.create({
-      userID: req.body.userID,
+      userID: req.user.id,
       title: req.body.title,
       author: req.body.author,
       isRead: false
     });
+    
   });
 
   app.put("/api/changeread/:id", function(req, res) {
+    console.log(req.body.isRead);
     db.userBook
-      .update({ isRead: req.body.isRead }, { where: id })
-      .then(function() {
-        res.redirect(307, "/api/login");
+      .update({ isRead: req.body.isRead }, { where: {id: req.params.id }})
+      .then(function(data) {
+         res.json(data);
       })
       .catch(function(err) {
         res.status(401).json(err);
