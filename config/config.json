@@ -1,8 +1,9 @@
 {
   "development": {
-    "username": "ahzyt8d1n58u915i",
-    "database": "bookworm_db",
-    "host": "q3vtafztappqbpzn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "q7v5y5x69hyafuzr",
+    "database": "ddtn37a11a2xalw3",
+    "host": "fugfonv8odxxolj8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "password": "ojj7e1r73v3zkrj1",
     "dialect": "mysql"
   },
   "test": {
