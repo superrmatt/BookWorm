@@ -1,10 +1,11 @@
-form.signup,
+ form.signup,
 form.login {
   margin-top: 50px;
-}
+} 
+
 
 #backgroundWrapper{
-  background-image: url("libary.jpg");
+  background-image: url("library.jpg");
   width: 100vw;
   height: 100vh;
   top: 0px;
@@ -31,6 +32,7 @@ form.login {
 }
 
 #loginDiv.container{
+  border-radius: 7px;
   margin-top: 100px;
   width: 400px;
   min-height: 300px;
@@ -38,6 +40,7 @@ form.login {
 }
 
 #signUpDiv.container{
+  border-radius: 7px;
   margin-top: 100px;
   width: 400px;
   min-height: 300px;
@@ -110,3 +113,21 @@ form.login {
   background-color: white;
   border: 1px solid black;
 }
+
+
+/*==============Member.html Styling=========================*/
+#membersBackground {
+  background-image: url("pages.jpg");
+}
+#indexBackground {
+  background-image: url("colorfulBooks.jpg");
+}
+
+.jumbotron, #loginDiv, #signUpDiv{
+  box-shadow: 5px 5px 8px gray;
+}
+.index { background-color: rgb(224, 217, 217);
+}
+.navbar { background-color: teal;
+}
+

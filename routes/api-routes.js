@@ -37,11 +37,20 @@ module.exports = function (app) {
 
   });
 
+<<<<<<< HEAD
   app.put("/api/changeread/:id", function (req, res) {
     db.userBook
       .update({ isRead: req.body.isRead }, { where: req.params.id })
       .then(function () {
         res.redirect(307, "/api/login");
+=======
+  app.put("/api/changeread/:id", function(req, res) {
+    console.log(req.body.isRead);
+    db.userBook
+      .update({ isRead: req.body.isRead }, { where: {id: req.params.id }})
+      .then(function(data) {
+         res.json(data);
+>>>>>>> 67f8443f62f2641cbe856cbafb1aa992be52ad00
       })
       .catch(function (err) {
         res.status(401).json(err);

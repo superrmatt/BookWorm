@@ -2,7 +2,7 @@
 var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+var passport = require("./config/passport"); //testing testing
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -28,7 +28,7 @@ require("./routes/api-routes.js")(app);
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      "==> 🌎 Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
       PORT
     );
