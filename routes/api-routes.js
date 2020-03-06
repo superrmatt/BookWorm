@@ -29,11 +29,12 @@ module.exports = function(app) {
 
   app.post("/api/addnew", function(req) {
     db.userBook.create({
-      userID: req.body.userID,
+      userID: req.user.id,
       title: req.body.title,
       author: req.body.author,
       isRead: false
     });
+    
   });
 
   app.put("/api/changeread/:id", function(req, res) {
