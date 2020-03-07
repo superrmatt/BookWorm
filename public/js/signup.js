@@ -25,7 +25,7 @@ $(document).ready(function() {
   // Otherwise we log any errors
   function signUpUser(email, password) {
     $.post("/api/signup", {
-      name: name,
+      userName: userName,
       email: email,
       password: password
     })
