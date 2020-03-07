@@ -15,6 +15,7 @@
     "username": "q7v5y5x69hyafuzr",
     "database": "ddtn37a11a2xalw3",
     "host": "fugfonv8odxxolj8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
