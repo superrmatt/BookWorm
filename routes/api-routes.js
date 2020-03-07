@@ -69,20 +69,20 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/user_books", function(req, res) {
+  app.get("/api/user_books", async function (req, res) {
     if (!req.user) {
       //! The user is not logged in, send back an empty object
       res.json({});
     } else {
       //! Otherwise send back the user's email and id
       //! Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        title: req.userBook.title,
-        author: req.userBook.author,
-        isRead: req.userBook.isRead,
-        id: req.user.id
+      let response = await db.userBook.findAll({
+        attributes: ["title", "author", "isRead"],
+        where: {
+          userID: req.user.id
+        }
       });
-      console.log(req.userBook.title);
+      res.json(response);
     }
   });
 };
