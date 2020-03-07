@@ -3,6 +3,6 @@ package.json
 package-lock.json
 README.md
 .gitignore
-.eslint.json
+.eslintrc.json
 .travis.yml
 public/js/members.js
