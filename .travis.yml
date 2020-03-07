@@ -10,7 +10,7 @@ cache:
   directories:
     - node_modules
 before_install:
-  - mysql -e 'CREATE DATABASE bookworm_db;'
+  - mysql -e 'CREATE DATABASE ddtn37a11a2xalw3;'
 
 
 
