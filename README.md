@@ -21,6 +21,8 @@ If you are done with reading, simply delete the book.
 
 #Problems
 
+None at the moment. 
+
 
 #Technologies used
 
@@ -35,4 +37,4 @@ Passport
 Web Scraper
 j.Query
 
-Contributors :
+Contributors : Shelby, Matt, Liliana & Luis
