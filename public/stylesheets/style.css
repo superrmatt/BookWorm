@@ -1,8 +1,6 @@
 form.signup,
-form.login {
-  margin-top: 50px;
+form.login {  margin-top: 50px;
 } 
-
 
 #backgroundWrapper{
   background-image: url("library.jpg");
@@ -12,23 +10,6 @@ form.login {
   left: 0px;
   position: fixed;
   display: block;
-}
-
-#dashBoard.container{
-  margin-top: 100px;
-  min-height: 300px;
-  max-height: calc(100vh - 200px);
-  background-color: #292929;
-
-  padding-right: 0px;
-  padding-left: 0px;
-  overflow: auto;
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-}
-
-#dashBoard.container::-webkit-scrollbar {
-  width: 0 !important;
 }
 
 #loginDiv.container{
@@ -47,80 +28,20 @@ form.login {
   background-color: rgb(236, 235, 235);
 }
 
-.h3{
-  color: white;
+.mainBookSearch { background-color:rgb(236, 235, 235);
+                  border-radius: 10px;
+                  box-shadow: 5px 4px 8px gray;
+                  margin: 5px;
 }
 
-#sideBar{
-  padding-top: 10px;
-  padding-left: 10px;
-  width: 225px;
-  height: 645px;
-  float: left;
-  position: relative;
+.userSaved {  background-color:rgb(236, 235, 235);
+              border-radius: 10px;
+              float:left;
+              box-shadow: 5px 4px 8px gray;
+              margin: 5px;
 }
 
-#sideBar h4{
-  margin-top: 25px;
-  color: white;
-}
-
-#searchCats{
-  margin-top: 10px;
-}
-
-#userSearch{
-  margin-left: 2px;
-  width: 200px;
-  
-}
-
-#searchBtn{
-  margin-top: 10px;
-  margin-left: calc(65% - 73px);
-}
-
-#bookContainer{
-  width: 100%;
-  min-height: 600px;
-  background-color: #EEEEEE;
-  margin-bottom: 20px;
-}
-
-#content{
-  width: calc(100% - 250px);
-  position: relative;
-  float: left;
-}
-
-#bottomSection{
-  width: 100%;
-  bottom: 0px;
-  position: absolute;
-}
-
-#addBookBtn{
-  margin-left: calc(65% - 95px);
-}
-
-.bookDiv{
-  padding: 20px;
-  margin-right: 10px;
-  width: 250px;
-}
-
-#addNewBookBtn{
-  background-color: white;
-  border: 1px solid black;
-}
-
-
-/*==============Member.html Styling=========================*/
-#membersBackground {
-  background-image: url("pages.jpg");
-}
-#indexBackground {
-  background-image: url("colorfulBooks.jpg");
+body{ background-color: rgba(255, 252, 221, 0.911);
 }
 
 .jumbotron, #loginDiv, #signUpDiv{
@@ -129,12 +50,18 @@ form.login {
   text-align: center;
 }
 
+#indexBackground {
+  background-image: url("colorfulBooks.jpg");
+}
 .index { background-color: rgb(224, 217, 217);
 }
 
 .navbar { background-color: teal;
 }
 
+#membersBackground {
+  background-image: url("library.jpg");
+}
 a:hover { background-image:url("worm.png");
           background-repeat: no-repeat;
 }

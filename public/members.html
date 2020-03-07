@@ -11,47 +11,46 @@
 
 <body id="membersBackground">
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">
+          Logout
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+
   <div class="container">
     <div class="row">
-      <div class="col-2">
-<div class="row">
-  <div class="savedBooks">
-    <h3>Saved Books</h3>
-    <div class="savedBooksList">
+<!------------------Saved Searches and User work---->
+      <div class="userSaved col-md-3">
+        <div class="savedBooks">
+          <h3>Saved Books</h3>
+          <div class="savedBooksList">
+      
+          </div>
+        </div>
 
-    </div>
-  </div>
-</div>
-<div class="row">
-<div class="usersWork">
-  <h3>Users Work</h3>
-  <div class="savedWorkList">
-
-  </div>
-</div>
-</div>
+        <div class="usersWork">
+          <h3>Users Work</h3>
+          <div class="savedWorkList">
+        
+          </div>
+        </div>
       </div>
-      <div class="col-10">
 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+<!--------------Main Book Search Div--------------->
+      <div class="mainBookSearch col-md-7 col-12">
         <h2>Welcome <span class="member-name"></span></h2>
-        <div class="col-md-6 new-book-section">
-          <form class="member-list"></form>
+        <div class="new-book-section">
+          <form class="member-list">
+            
+          </form>
         </div>
         <input type="text" id="book-name">
-        <button class="add-new">search</button>  
+        <button class="add-new">search</button>
       </div>
+
     </div>
   </div>
 
@@ -59,5 +58,4 @@
   <script type="text/javascript" src="js/members.js"></script>
 
 </body>
-
 </html>
