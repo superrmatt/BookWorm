@@ -34,15 +34,13 @@ module.exports = function(app) {
       author: req.body.author,
       isRead: false
     });
-    
   });
 
   app.put("/api/changeread/:id", function(req, res) {
-    console.log(req.body.isRead);
     db.userBook
-      .update({ isRead: req.body.isRead }, { where: {id: req.params.id }})
-      .then(function(data) {
-         res.json(data);
+      .update({ isRead: req.body.isRead }, { where: req.params.id })
+      .then(function() {
+        res.redirect(307, "/api/login");
       })
       .catch(function(err) {
         res.status(401).json(err);
@@ -67,6 +65,23 @@ module.exports = function(app) {
         email: req.user.email,
         id: req.user.id
       });
+    }
+  });
+
+  app.get("/api/user_books", function(req, res) {
+    if (!req.user) {
+      //! The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      //! Otherwise send back the user's email and id
+      //! Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        title: req.userBook.title,
+        author: req.userBook.author,
+        isRead: req.userBook.isRead,
+        id: req.user.id
+      });
+      console.log(req.userBook.title);
     }
   });
 };
