@@ -37,20 +37,12 @@ module.exports = function (app) {
 
   });
 
-<<<<<<< HEAD
-  app.put("/api/changeread/:id", function (req, res) {
-    db.userBook
-      .update({ isRead: req.body.isRead }, { where: req.params.id })
-      .then(function () {
-        res.redirect(307, "/api/login");
-=======
   app.put("/api/changeread/:id", function(req, res) {
     console.log(req.body.isRead);
     db.userBook
       .update({ isRead: req.body.isRead }, { where: {id: req.params.id }})
       .then(function(data) {
          res.json(data);
->>>>>>> 67f8443f62f2641cbe856cbafb1aa992be52ad00
       })
       .catch(function (err) {
         res.status(401).json(err);
@@ -78,20 +70,20 @@ module.exports = function (app) {
     }
   });
 
-  app.get("/api/user_books", function (req, res) {
+  app.get("/api/user_books", async function (req, res) {
     if (!req.user) {
       //! The user is not logged in, send back an empty object
       res.json({});
     } else {
       //! Otherwise send back the user's email and id
       //! Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        title: req.userBook.title,
-        author: req.userBook.author,
-        isRead: req.userBook.isRead,
-        id: req.user.id
+      let response = await db.userBook.findAll({
+        attributes: ["title", "author", "isRead"],
+        where: {
+          userID: req.user.id
+        }
       });
-      console.log(req.userBook.title);
+      res.json(response);
     }
   });
 };
