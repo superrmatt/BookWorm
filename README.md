@@ -36,8 +36,8 @@ Project is still under construction. Therefore, many problems exist. Mainly, pub
 ### Technologies
 
 - HTML/CSS
-    1. Bootstrap
-    2. HTML5
+    - Bootstrap
+    - HTML5
 - Javascript
     1. Node.js
     2. NPM
