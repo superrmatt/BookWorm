@@ -39,18 +39,18 @@ Project is still under construction. Therefore, many problems exist. Mainly, pub
     - Bootstrap
     - HTML5
 - Javascript
-    1. Node.js
-    2. NPM
-    3. Sequelize
-    4. Passport
-    5. Ajax
-    6. JQuery
-    7. Express
-    8. BcryptJS
-    9. epub-gen
+    - Node.js
+    - NPM
+    - Sequelize
+    - Passport
+    - Ajax
+    - JQuery
+    - Express
+    - BcryptJS
+    - epub-gen
 - MySQL
-    1. JawsDB
-    2. Microsoft SQL Server
+    - JawsDB
+    - Microsoft SQL Server
 
 ### Contributors
 - Shelby Palumbo
