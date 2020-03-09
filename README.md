@@ -53,7 +53,7 @@ Project is still under construction. Therefore, many problems exist. Mainly, pub
     - Microsoft SQL Server
 
 ### Contributors
-- Shelby Palumbo ( https://github.com/shelbypalumbo ) 
-- Matt Dambra ( https://github.com/superrmatt )
-- Liliana Kendrick ( https://github.com/LilianaKendrick )
-- Luis Gomez ( https://github.com/Lmgom875 )
+- Shelby Palumbo (https://github.com/shelbypalumbo) 
+- Matt Dambra (https://github.com/superrmatt)
+- Liliana Kendrick (https://github.com/LilianaKendrick)
+- Luis Gomez (https://github.com/Lmgom875)
