@@ -5,12 +5,6 @@
     "host": "fugfonv8odxxolj8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
-  "test": {
-    "username": "",
-    "database": "",
-    "host": "",
-    "dialect": "mysql"
-  },
   "production": {
     "username": "q7v5y5x69hyafuzr",
     "database": "ddtn37a11a2xalw3",

@@ -1,40 +1,59 @@
 # BookWorm
 
 Application that allows user to view books like an online library. <br>
-Also allows users to publish books of their own in electronic reading format. <br>
-Under construction.
+Also allows users to publish books of their own in electronic reading format to be read on Kindle or Nook. <br>
+Under construction. <br>
 
 Deployed to: https://bookwormlibrary.herokuapp.com/
 
-#Concept
+## Table of Contents
+1. [Concept](https://github.com/superrmatt/BookWorm#concept)
+2. [Walkthrough](https://github.com/superrmatt/BookWorm#walkthrough)
+3. [Problems](https://github.com/superrmatt/BookWorm#problems)
+4. [Technologies](https://github.com/superrmatt/BookWorm#technologies)
+4. [Contributors](https://github.com/superrmatt/BookWorm#contributors)
 
-To use all our knowledge so far in the course
-Create user friendly library that anyone can use
+### Concept
 
-#How to use
+ &nbsp;&nbsp;&nbsp;&nbsp;The concept is simple, avid readers often have a long list of books they wish to read after completion of their current. These lists can quickly become daunting and difficult to keep track. Writing it down can result in losing the list. BookWorm aims to solve that problem by giving the user access to an online database of books to read, and books read. This way readers can not only abandon their mental or written lists, but can also keep track of what has already been read. For Amazon Kindle or Barnes & Noble Nook users, BookWorm also has a functionality that allows users to create e-book files to then be stored and shared on their favorite electronic reading device.
 
-Please sign up first and log in with your credentials
-You can search books by author's name, by title of the book, by isbn number and by gengres.
-You can also add a book that doesn't exist in database manualy. (Plese fill in the form)
-Add all the books you are planning to read to a wish list.
-If you are done with reading, simply delete the book.
+### Walkthrough
 
-#Problems
+BookWorm is an easy application to use. Either clone this repository or head to the link where the application is hosted on Heroku, read on below for more.
 
-None at the moment. 
+1. After download, open terminal and run <code>node ./server.js</code>
+2. Navigate to the localhost port that is now in use by the application.
+    - Alternatively, navigate to https://bookwormlibrary.herokuapp.com/.
+3. Signup/login to access the application.
+4. A book can be added to user wishlist by the search functionality. Books can be marked read by user.
+5. Functionality in progress: publishing one's own work. Upates to come as functionality appears.
+
+### Problems
+
+Project is still under construction. Therefore, many problems exist. Mainly, publishing to ebook format is not currently available.
 
 
-#Technologies used
+### Technologies
 
-HTML/CSS
-Bootstrap
-Javascript
-Node.js
-NPM Packages
-MySQL
-Sequelize
-Passport
-Web Scraper
-j.Query
+- HTML/CSS
+    - Bootstrap
+    - HTML5
+- Javascript
+    - Node.js
+    - NPM
+    - Sequelize
+    - Passport
+    - Ajax
+    - JQuery
+    - Express
+    - BcryptJS
+    - epub-gen
+- MySQL
+    - JawsDB
+    - Microsoft SQL Server
 
-Contributors : Shelby, Matt, Liliana & Luis
+### Contributors
+- Shelby Palumbo (https://github.com/shelbypalumbo) 
+- Matt Dambra (https://github.com/superrmatt)
+- Liliana Kendrick (https://github.com/LilianaKendrick)
+- Luis Gomez (https://github.com/Lmgom875)
