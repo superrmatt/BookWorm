@@ -26,7 +26,7 @@ BookWorm is an easy application to use. Either clone this repository or head to 
     - Alternatively, navigate to https://bookwormlibrary.herokuapp.com/.
 3. Signup/login to access the application.
 4. A book can be added to user wishlist by the search functionality. Books can be marked read by user.
-5. functionality in progress: publishing one's own work. Upates to come as functionality appears.
+5. Functionality in progress: publishing one's own work. Upates to come as functionality appears.
 
 ### Problems
 
