@@ -1,7 +1,7 @@
 form.signup, form.login {  margin-top: 50px;
 } 
 
-#backgroundWrapper{ background-image: url("library.jpg");
+#backgroundWrapper{ background-image: url("images/library.jpg");
                     background-size: cover;
                     background-repeat: no-repeat;
                     width: 100vw;
@@ -49,7 +49,7 @@ body { background-color: rgba(255, 252, 221, 0.911);
                                     text-align: center;
 }
 
-#indexBackground {  background-image: url("colorfulBooks.jpg");
+#indexBackground {  background-image: url("images/colorfulBooks.jpg");
                     background-size: cover;
                     background-repeat: no-repeat;
                     width: 100vw;
@@ -62,7 +62,7 @@ body { background-color: rgba(255, 252, 221, 0.911);
 .navbar { background-color: teal;
 }
 
-#membersBackground {  background-image: url("library.jpg");
+#membersBackground {  background-image: url("images/library.jpg");
                       background-size: cover;
                       background-repeat: no-repeat;
                       width: 100vw;
@@ -70,7 +70,7 @@ body { background-color: rgba(255, 252, 221, 0.911);
                       font-family: 'Libre Franklin', sans-serif;
 }
 
-a:hover { background-image:url("worm.png");
+a:hover { background-image:url("images/worm.png");
           background-repeat: no-repeat;
 }
 
@@ -85,18 +85,20 @@ h1 { font-family:'Shadows Into Light', cursive;
 
 .add-new {  padding: 10px;
             border-radius: 10px;
-            background-color: orange;
-            border-color: orange;
+            background-color: rgb(252, 125, 7);
+            border-color: rgb(252, 125, 7);
             margin:10px;
+            color: white;
 }
 
 #book-name {  margin: 10px;
 }
 
 .update-database {
-  padding: 5px;
+  padding: 7px;
   border-radius: 10px;
   background-color: rgb(233, 90, 233);
   border-color:rgb(233, 90, 233);
   margin:10px;
+  color: white;
   }
