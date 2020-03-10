@@ -6,10 +6,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
- <link href="stylesheets/style.css" rel="stylesheet">
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body id="membersBackground">
@@ -25,9 +24,11 @@
 
   <div class="container">
     <div class="row">
-<!------------------Saved Searches and User work---->
-      <div class="userSaved col-md-4">
-        <div class="savedBooks">
+      <!------------------Saved Searches and User work---->
+      <div class="userSaved col-md-4 overflow-auto">
+
+
+        <!-- <div class="savedBooks">
           <h3>Saved Books</h3>
           <div class="savedBooksList">
           </div>
@@ -37,42 +38,68 @@
           <h3>Users Work</h3>
           <div class="savedWorkList">
         </div>
+        </div> -->
+
+        <div class="card mb-3 overflow-auto" style="max-width: 18rem; height:275px;">
+          <div class="card-header"><h3>Saved Books</h3></div>
+          <div class="card-body">
+            <div class="savedBooks">
+              <div class="savedBooksList">
+              
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="card mb-3 overflow-auto" style="max-width: 18rem; height:275px;">
+          <div class="card-header"><h3>Users Work</h3></div>
+          <div class="card-body">
+            <div class="usersWork">
+              <div class="savedWorkList">
+              
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
 
-<!--------------Main Book Search Div--------------->
+      <!--------------Main Book Search Div--------------->
       <div class="mainBookSearch overflow-auto col-md-7">
         <h2>Welcome, <span class="member-name"></span></h2>
-
-        <!------------>
-          <div class="dropdown">
+      <hr>
+      
+        <!-- <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Search By...
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <ul>
-                <li><button class="dropdown-item" type="button">Title</button></li>
-                <li><button class="dropdown-item" type="button">Author</button></li>
-                <li><button class="dropdown-item" type="button">Genre</button></li>
+                <li><button class="searchByTitle add-new dropdown-item" type="button">Title</button></li>
+                <li><button class="searchByAuthor add-new dropdown-item" type="button">Author</button></li>
               </ul>
             </div>
-            </div>
-        <!------------>
+            </div> -->
+        
+
 
         <div class="new-book-section">
+            <input type="text" id="book-name">
+            <button class="add-new">Search</button> 
+            <!-- <button class="searchByTitle" type="button">Title</button>
+            <button class="searchByAuthor" type="button">Author</button> -->
+    
           <form class="member-list">
-            
+
           </form>
         </div>
-        <input type="text" id="book-name">
-        <button class="add-new">Search</button> 
       </div>
-
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/members.js"></script>
-
 </body>
+
 </html>
