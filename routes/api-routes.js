@@ -97,6 +97,19 @@ module.exports = function(app) {
     }
   });
   app.post("/api/publish", function(req, res) {
-    
+    db.userBook
+      .create({
+        userID: req.user.id,
+        title: req.body.title,
+        author: req.body.author,
+        body: req.body.body
+      })
+      .then(function() {
+        //some alert that publsihed work added.
+      })
+      
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
   });
 };
