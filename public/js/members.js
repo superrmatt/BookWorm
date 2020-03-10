@@ -4,7 +4,7 @@ $(document).ready(function() {
   var newBookSection = $(".new-book-section");
 
   $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.userName);
+    $(".member-name").text(data.userName + "!");
   });
 
   $(".add-new").click(function() {
@@ -28,12 +28,6 @@ $(document).ready(function() {
           thisBookIndex = thisBookIndex.replace(/\D/g,''); //parse to return just the number
           var newTitle = $("input:checked").val();
           var author = data.items[thisBookIndex].volumeInfo.authors[0];
-
-          console.log("---------------NEW BOOK!!---------------")
-          console.log("thisBookIndex = " + thisBookIndex);
-          console.log("newTitle = " + newTitle);
-          console.log("author = " + author);
-          
           
           addBook(newTitle, author);
           $("#title" + thisBookIndex).remove() //now remove those html elements
@@ -47,12 +41,6 @@ $(document).ready(function() {
     $.post("/api/addnew", {
       title: title,
       author: author
-    })
-      .then(function() {
-        //show some alert that books were added??? idk man
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
+    });
   }
 });

@@ -28,13 +28,20 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/addnew", function(req) {
-    db.userBook.create({
-      userID: req.user.id,
-      title: req.body.title,
-      author: req.body.author,
-      isRead: false
-    });
+  app.post("/api/addnew", function(req, res) {
+    db.userBook
+      .create({
+        userID: req.user.id,
+        title: req.body.title,
+        author: req.body.author,
+        isRead: false
+      })
+      .then(function() {
+        //show some alert that books were added??? idk man
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
   });
 
   app.put("/api/changeread/:id", function(req, res) {
