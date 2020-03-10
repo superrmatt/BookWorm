@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var Epub = require("epub-gen");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -28,13 +29,20 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/addnew", function(req) {
-    db.userBook.create({
-      userID: req.user.id,
-      title: req.body.title,
-      author: req.body.author,
-      isRead: false
-    });
+  app.post("/api/addnew", function(req, res) {
+    db.userBook
+      .create({
+        userID: req.user.id,
+        title: req.body.title,
+        author: req.body.author,
+        isRead: false
+      })
+      .then(function() {
+        //TODO: show some alert that books were added??? idk man
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
   });
 
   app.put("/api/changeread/:id", function(req, res) {
@@ -88,5 +96,40 @@ module.exports = function(app) {
           res.json(response);
         });
     }
+  });
+
+  app.get("/api/published_works", function(req, res) {
+    db.publishedWork
+      .findAll({
+        attributes: ["title", "author", "body"]
+      })
+      .then(function(response) {
+        res.json(response);
+      });
+  });
+
+  app.post("/api/publish", function(req, res) {
+    var filePath =
+      "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
+    db.publishedWork
+      .create({
+        title: req.body.title,
+        author: req.body.author,
+        path: filePath
+      })
+      .then(function() {
+        var option = {
+          title: req.body.title, // *Required, title of the book.
+          author: req.body.author, // *Required, name of the author.
+          cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
+          content: req.body.body
+        };
+
+        //eslint-disable-next-line prettier/prettier
+        new Epub(option, filePath);
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
   });
 };

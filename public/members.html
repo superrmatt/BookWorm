@@ -24,21 +24,10 @@
 
   <div class="container">
     <div class="row">
-      <!------------------Saved Searches and User work---->
-      <div class="userSaved col-md-4 overflow-auto">
 
-
-        <!-- <div class="savedBooks">
-          <h3>Saved Books</h3>
-          <div class="savedBooksList">
-          </div>
-        </div>
-      
-        <div class="usersWork">
-          <h3>Users Work</h3>
-          <div class="savedWorkList">
-        </div>
-        </div> -->
+<!------------------Saved Searches and User work - Main Left Div------------------>
+      <div class="userSaved col-md-4">
+        
 
         <div class="card mb-3 overflow-auto" style="max-width: 18rem; height:275px;">
           <div class="card-header"><h3>Saved Books</h3></div>
@@ -65,40 +54,74 @@
 
       </div>
 
-      <!--------------Main Book Search Div--------------->
+<!--------------Book Search & Publish - Main Right Div--------------->
       <div class="mainBookSearch overflow-auto col-md-7">
         <h2>Welcome, <span class="member-name"></span></h2>
-      <hr>
-      
-        <!-- <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Search By...
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <ul>
-                <li><button class="searchByTitle add-new dropdown-item" type="button">Title</button></li>
-                <li><button class="searchByAuthor add-new dropdown-item" type="button">Author</button></li>
-              </ul>
-            </div>
-            </div> -->
-        
-
 
         <div class="new-book-section">
-            <input type="text" id="book-name">
-            <button class="add-new">Search</button> 
-            <!-- <button class="searchByTitle" type="button">Title</button>
-            <button class="searchByAuthor" type="button">Author</button> -->
-    
-          <form class="member-list">
-
-          </form>
+            <div id="addAlert"></div>
+          <input type="text" id="book-name">
+          <button class="add-new">search</button>
         </div>
+          <form class="member-list">
+          </form>
+             
+        <!--------------EPUB ZONE--------------->
+        <hr>
+        <label for="basic-url">EPUB</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Title</span>
+          </div>
+          <input type="text" class="pubTitle form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Author</span>
+          </div>
+          <input type="text" class="pubAuthor form-control">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Chapter Title</span>
+          </div>
+          <input type="text" class="chapTitle form-control">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Chapter Author</span>
+          </div>
+          <input type="text" class="chapAuthor form-control">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Body</span>
+          </div>
+          <textarea class="pubBody form-control" aria-label="With textarea"></textarea>
+        </div>
+        <div id="pubAlert"></div>
+
+        <button class="addChapter btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Add Chapter</button>
+        <button class="publish btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Publish</button> 
+
       </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+      function pubTimeout(){
+        $("#pubAlert").empty();
+      }
+
+      function addTimeout(){
+        $("#addAlert").empty();
+      }
+  </script>
   <script type="text/javascript" src="js/members.js"></script>
 </body>
 
