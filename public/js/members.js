@@ -4,7 +4,7 @@ $(document).ready(function() {
   var newBookSection = $(".new-book-section");
 
   $.get("/api/user_data").then(function(data) {
-    $(".member-name").text(data.email);
+    $(".member-name").text(data.userName);
   });
 
   $(".add-new").click(function() {
