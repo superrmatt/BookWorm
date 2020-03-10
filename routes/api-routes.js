@@ -97,10 +97,10 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/publsihed_works", function(req, res) {
+  app.get("/api/published_works", function(req, res) {
     db.publishedWork
       .findAll({
-        attributes: ["title", "author"]
+        attributes: ["title", "author", "body"]
       })
       .then(function(response) {
         res.json(response);
