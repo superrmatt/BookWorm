@@ -96,10 +96,21 @@ module.exports = function(app) {
         });
     }
   });
+
+  app.get("/api/publsihed_works", function(req, res) {
+    db.publishedWork
+      .findAll({
+        attributes: ["title", "author"]
+      })
+      .then(function(response) {
+        res.json(response);
+      });
+  });
+
   app.post("/api/publish", function(req, res) {
-    db.userBook
+    db.publishedWork
       .create({
-        userID: req.user.id,
+        userID: req.body.userID,
         title: req.body.title,
         author: req.body.author,
         body: req.body.body
@@ -107,7 +118,6 @@ module.exports = function(app) {
       .then(function() {
         //some alert that publsihed work added.
       })
-      
       .catch(function(err) {
         res.status(401).json(err);
       });
