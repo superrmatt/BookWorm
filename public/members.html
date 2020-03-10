@@ -25,7 +25,8 @@
 
   <div class="container">
     <div class="row">
-<!------------------Saved Searches and User work---->
+
+<!------------------Saved Searches and User work - Main Left Div------------------>
       <div class="userSaved col-md-4">
         <div class="savedBooks">
           <h3>Your List</h3><hr>
@@ -40,11 +41,11 @@
         </div>
       </div>
 
-<!--------------Main Book Search Div--------------->
+<!--------------Book Search & Publish - Main Right Div--------------->
       <div class="mainBookSearch overflow-auto col-md-7">
         <h2>Welcome, <span class="member-name"></span></h2>
 
-        <!------------>
+        <!------Dropdown------>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Search By...
@@ -64,9 +65,11 @@
             
           </form>
         </div>
+        <div id="addAlert"></div>
         <input type="text" id="book-name">
         <button class="add-new">Search</button> 
-        <!--------------EPUB ZONE --------------->
+
+        <!--------------EPUB ZONE--------------->
         <hr>
         <label for="basic-url">EPUB</label>
         <div class="input-group mb-3">
@@ -89,9 +92,9 @@
           </div>
           <textarea class="pubBody form-control" aria-label="With textarea"></textarea>
         </div>
+        <div id="pubAlert"></div>
 
-        <button class="publish btn btn-primary">Publish</button> 
-
+        <button class="publish btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Publish</button> 
 
       </div>
 
@@ -99,6 +102,14 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+      function pubTimeout(){
+        $("#pubAlert").empty();
+      }
+      function addTimeout(){
+        $("#addAlert").empty();
+      }
+  </script>
   <script type="text/javascript" src="js/members.js"></script>
 
 </body>

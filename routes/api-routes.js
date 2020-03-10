@@ -31,7 +31,7 @@ module.exports = function(app) {
   app.post("/api/addnew", function(req, res) {
     db.userBook
       .create({
-        userID: req.user.userID,
+        userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
         isRead: false
@@ -71,7 +71,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.userID,
+        id: req.user.id,
         userName: req.user.userName
       });
     }
@@ -88,7 +88,7 @@ module.exports = function(app) {
         .findAll({
           attributes: ["title", "author", "isRead"],
           where: {
-            userID: req.user.userID
+            userID: req.user.id
           }
         })
         .then(function(response) {
@@ -110,7 +110,7 @@ module.exports = function(app) {
   app.post("/api/publish", function(req, res) {
     db.publishedWork
       .create({
-        userID: req.user.userID,
+        userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
         body: req.body.body

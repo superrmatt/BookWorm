@@ -20,7 +20,7 @@ $(document).ready(function() {
         for (let i = 0; i < data.items.length; i++) {
           memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
         }
-        newBookSection.append("<button class=\"update-database\">Add Selected</button>");
+        newBookSection.append("<button class=\"update-database\" onclick=\"setTimeout(addTimeout, 3000)\">Add Selected</button>");
 
         $(document).delegate(".update-database","click", function(e) {
           e.preventDefault();
@@ -32,6 +32,8 @@ $(document).ready(function() {
           addBook(newTitle, author);
           $("#title" + thisBookIndex).remove() //now remove those html elements
           $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
+          
+          $("#addAlert").html("<div class=\"alert alert-success\" role=\"alert\">Added Successfully!</div>");
         });
       }
     });
@@ -42,7 +44,8 @@ $(document).ready(function() {
     let author = $(".pubAuthor").val();
     let body = $(".pubBody").val();
 
-    publish(title, author, body)
+    publish(title, author, body);
+    $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
 
   function addBook(title, author){
