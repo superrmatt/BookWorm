@@ -44,6 +44,7 @@ $(document).ready(function() {
 
   
   $(".publish").click(function(){
+
     let title = $(".pubTitle").val();
     let author = $(".pubAuthor").val();
     //if the counter is 0, it means no chapters have been added, meaning we publish entire body as chapter 1.
@@ -100,5 +101,7 @@ $(document).ready(function() {
       body: body,
       chapterCount: counter
     });
+    // clear chapters array
+    chapters = [];
   }
 });

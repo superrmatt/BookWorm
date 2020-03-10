@@ -109,32 +109,24 @@ module.exports = function(app) {
   });
 
   app.post("/api/publish", function(req, res) {
+    var filePath =
+      "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
     db.publishedWork
       .create({
         title: req.body.title,
-        author: req.body.author
+        author: req.body.author,
+        path: filePath
       })
       .then(function() {
-        if (req.body.chapterCount === 0) {
-          var option = {
-            title: req.body.title, // *Required, title of the book.
-            author: req.body.author, // *Required, name of the author.
-            cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
-            content: [
-              {
-                data: req.body.body
-              }
-            ]
-          };
-        } else {
-          //need to add chapter per counter.
-          for (var i = 0; i < req.body.chapterCount; i++) {
-            //add chapters as objects to option.content
-          }
-        }
+        var option = {
+          title: req.body.title, // *Required, title of the book.
+          author: req.body.author, // *Required, name of the author.
+          cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
+          content: req.body.body
+        };
 
         //eslint-disable-next-line prettier/prettier
-        new Epub(option, "../BookWorm/public/publishedWorks/" + req.body.title + ".epub");
+        new Epub(option, filePath);
       })
       .catch(function(err) {
         res.status(401).json(err);
