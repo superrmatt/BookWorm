@@ -31,13 +31,13 @@ module.exports = function(app) {
   app.post("/api/addnew", function(req, res) {
     db.userBook
       .create({
-        userID: req.user.id,
+        userID: req.user.userID,
         title: req.body.title,
         author: req.body.author,
         isRead: false
       })
       .then(function() {
-        //show some alert that books were added??? idk man
+        //TODO: show some alert that books were added??? idk man
       })
       .catch(function(err) {
         res.status(401).json(err);
@@ -71,7 +71,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id,
+        id: req.user.userID,
         userName: req.user.userName
       });
     }
@@ -88,7 +88,7 @@ module.exports = function(app) {
         .findAll({
           attributes: ["title", "author", "isRead"],
           where: {
-            userID: req.user.id
+            userID: req.user.userID
           }
         })
         .then(function(response) {
@@ -110,13 +110,13 @@ module.exports = function(app) {
   app.post("/api/publish", function(req, res) {
     db.publishedWork
       .create({
-        userID: req.body.userID,
+        userID: req.user.userID,
         title: req.body.title,
         author: req.body.author,
         body: req.body.body
       })
       .then(function() {
-        //some alert that publsihed work added.
+        //TODO: some alert that publsihed work added.
       })
       .catch(function(err) {
         res.status(401).json(err);

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-  var memberList = $(".member-list");
-  var newBookSection = $(".new-book-section");
+  let memberList = $(".member-list");
+  let newBookSection = $(".new-book-section");
 
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.userName + "!");
@@ -10,24 +10,24 @@ $(document).ready(function() {
   $(".add-new").click(function() {
     memberList.empty();
     $(".update-database").remove();
-    var title = $("#book-name").val();
+    let title = $("#book-name").val();
     console.log("query = https://www.googleapis.com/books/v1/volumes?q=" + title);
 
     $.ajax({
       url: "https://www.googleapis.com/books/v1/volumes?q=" + title,
       method: "GET",
       success: function(data) {
-        for (var i = 0; i < data.items.length; i++) {
+        for (let i = 0; i < data.items.length; i++) {
           memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
         }
         newBookSection.append("<button class=\"update-database\">Add Selected</button>");
 
         $(document).delegate(".update-database","click", function(e) {
           e.preventDefault();
-          var thisBookIndex = $("input:Checked").attr("id");
+          let thisBookIndex = $("input:Checked").attr("id");
           thisBookIndex = thisBookIndex.replace(/\D/g,''); //parse to return just the number
-          var newTitle = $("input:checked").val();
-          var author = data.items[thisBookIndex].volumeInfo.authors[0];
+          let newTitle = $("input:checked").val();
+          let author = data.items[thisBookIndex].volumeInfo.authors[0];
           
           addBook(newTitle, author);
           $("#title" + thisBookIndex).remove() //now remove those html elements
@@ -37,10 +37,26 @@ $(document).ready(function() {
     });
   });
 
+  $(".publish").click(function(){
+    let title = $(".pubTitle").val();
+    let author = $(".pubAuthor").val();
+    let body = $(".pubBody").val();
+
+    publish(title, author, body)
+  });
+
   function addBook(title, author){
     $.post("/api/addnew", {
       title: title,
       author: author
+    });
+  }
+
+  function publish(title, author, body){
+    $.post("api/publish", {
+      title: title,
+      author: author,
+      body: body
     });
   }
 });
