@@ -2,6 +2,9 @@ $(document).ready(function() {
 
   let memberList = $(".member-list");
   let newBookSection = $(".new-book-section");
+  let counter = 1; //this variable will track how many chapters for each book.
+  let body;
+  let chapters = [];
 
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.userName + "!");
@@ -39,18 +42,48 @@ $(document).ready(function() {
     });
   });
 
+  
   $(".publish").click(function(){
     let title = $(".pubTitle").val();
     let author = $(".pubAuthor").val();
-    let body = $(".pubBody").val();
+    //if the counter is 0, it means no chapters have been added, meaning we publish entire body as chapter 1.
+    if(counter === 0){
+      let body = $(".pubBody").val();
 
-    //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
+      //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
+      body = "<p>" + body;
+      body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
+      body = body + "</p>";
+    } else {
+      body = chapters;
+    }
+
+    publish(title, author, body);
+    $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
+  });
+
+  $(".addChapter").click(function(){
+
+    // obtain chapter information and parse
+    let body = $(".pubBody").val();
     body = "<p>" + body;
     body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
     body = body + "</p>";
 
-    publish(title, author, body);
-    $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
+    //add info to the chapters array
+    let chapter = {
+      title: $(".pubTitle").val(),
+      author: $(".pubAuthor").val(),
+      data: body
+    }
+    chapters.push(chapter);
+
+    //alert user
+    $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Chapter Added! You may safely clear the body field.</div>");
+    
+    //lastly, increment chapter count
+    counter = counter + 1;
+
   });
 
   function addBook(title, author){
@@ -64,7 +97,8 @@ $(document).ready(function() {
     $.post("api/publish", {
       title: title,
       author: author,
-      body: body
+      body: body,
+      chapterCount: counter
     });
   }
 });

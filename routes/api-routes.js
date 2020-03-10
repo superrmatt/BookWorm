@@ -117,16 +117,23 @@ module.exports = function(app) {
         body: req.body.body
       })
       .then(function() {
-        var option = {
-          title: req.body.title, // *Required, title of the book.
-          author: req.body.author, // *Required, name of the author.
-          cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
-          content: [
-            {
-              data: req.body.body
-            }
-          ]
-        };
+        if (req.body.chapterCount === 0) {
+          var option = {
+            title: req.body.title, // *Required, title of the book.
+            author: req.body.author, // *Required, name of the author.
+            cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
+            content: [
+              {
+                data: req.body.body
+              }
+            ]
+          };
+        } else {
+          //need to add chapter per counter.
+          for (var i = 0; i < req.body.chapterCount; i++) {
+            //add chapters as objects to option.content
+          }
+        }
 
         //eslint-disable-next-line prettier/prettier
         new Epub(option, "../BookWorm/public/publishedWorks/" + req.body.title + ".epub");

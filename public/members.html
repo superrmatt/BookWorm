@@ -94,6 +94,7 @@
         </div>
         <div id="pubAlert"></div>
 
+        <button class="addChapter btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Add Chapter</button>
         <button class="publish btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Publish</button> 
 
       </div>
@@ -106,7 +107,7 @@
       function pubTimeout(){
         $("#pubAlert").empty();
       }
-      
+
       function addTimeout(){
         $("#addAlert").empty();
       }
