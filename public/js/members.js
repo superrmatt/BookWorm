@@ -44,6 +44,12 @@ $(document).ready(function() {
     let author = $(".pubAuthor").val();
     let body = $(".pubBody").val();
 
+    //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
+    body = "<p>" + body;
+    body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
+    body = body + "</p>";
+
+    console.log(body);
     publish(title, author, body);
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });

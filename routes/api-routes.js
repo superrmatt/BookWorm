@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var epub = require("epub-gen");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -116,7 +117,19 @@ module.exports = function(app) {
         body: req.body.body
       })
       .then(function() {
-        //TODO: some alert that publsihed work added.
+        var option = {
+          title: req.body.title, // *Required, title of the book.
+          author: req.body.author, // *Required, name of the author.
+          cover: "http://demo.com/url-to-cover-image.jpg", // Url or File path, both ok, this is a test image.
+          content: [
+            {
+              data: req.body.body
+            }
+          ]
+        };
+
+        //eslint-disable-next-line prettier/prettier
+        new Epub(option, "../public/publishedWorks/" + req.body.title + ".epub");
       })
       .catch(function(err) {
         res.status(401).json(err);
