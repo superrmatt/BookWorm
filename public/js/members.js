@@ -49,7 +49,6 @@ $(document).ready(function() {
     body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
     body = body + "</p>";
 
-    console.log(body);
     publish(title, author, body);
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });

@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-var epub = require("epub-gen");
+var Epub = require("epub-gen");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -120,7 +120,7 @@ module.exports = function(app) {
         var option = {
           title: req.body.title, // *Required, title of the book.
           author: req.body.author, // *Required, name of the author.
-          cover: "http://demo.com/url-to-cover-image.jpg", // Url or File path, both ok, this is a test image.
+          cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
           content: [
             {
               data: req.body.body
@@ -129,7 +129,7 @@ module.exports = function(app) {
         };
 
         //eslint-disable-next-line prettier/prettier
-        new Epub(option, "../public/publishedWorks/" + req.body.title + ".epub");
+        new Epub(option, "../BookWorm/public/publishedWorks/" + req.body.title + ".epub");
       })
       .catch(function(err) {
         res.status(401).json(err);
