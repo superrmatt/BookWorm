@@ -111,10 +111,8 @@ module.exports = function(app) {
   app.post("/api/publish", function(req, res) {
     db.publishedWork
       .create({
-        userID: req.user.id,
         title: req.body.title,
-        author: req.body.author,
-        body: req.body.body
+        author: req.body.author
       })
       .then(function() {
         if (req.body.chapterCount === 0) {
