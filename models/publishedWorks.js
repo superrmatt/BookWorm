@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-  var userBook = sequelize.define("userBook", {
+  var publishedWorks = sequelize.define("publishedWork", {
     userID: DataTypes.INTEGER,
     title: DataTypes.STRING,
     author: DataTypes.STRING,
-    isRead: DataTypes.BOOLEAN
+    body: DataTypes.TEXT
   });
-  return userBook;
+  return publishedWorks;
 };

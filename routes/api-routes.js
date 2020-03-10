@@ -96,4 +96,7 @@ module.exports = function(app) {
         });
     }
   });
+  app.post("/api/publish", function(req, res) {
+    
+  });
 };
