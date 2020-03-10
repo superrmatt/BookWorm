@@ -73,8 +73,8 @@ $(document).ready(function() {
 
     //add info to the chapters array
     let chapter = {
-      title: $(".pubTitle").val(),
-      author: $(".pubAuthor").val(),
+      title: $(".chapTitle").val(),
+      author: $(".chapAuthor").val(),
       data: body
     }
     chapters.push(chapter);
