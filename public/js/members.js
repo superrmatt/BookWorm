@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
-      userBooks.append(data[e].title + "<br></br>");
+      userBooks.append(data[e].title + " by " + data[e].author +  "<br><hr><br>");
     }
   });
 
@@ -38,10 +38,9 @@ $(document).ready(function () {
           thisBookIndex = thisBookIndex.replace(/\D/g, ''); //parse to return just the number
           let newTitle = $("input:checked").val();
           let author = data.items[thisBookIndex].volumeInfo.authors[0];
-          let image = data.items[thisBookIndex].volumeInfo.imageLinks.smallThumbnail;
-          console.log(image);
+          let smallImageLink = data.items[thisBookIndex].volumeInfo.imageLinks.smallThumbnail;
 
-          addBook(newTitle, author, image);
+          addBook(newTitle, author, smallImageLink);
           $("#title" + thisBookIndex).remove() //now remove those html elements
           $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
 
@@ -51,8 +50,7 @@ $(document).ready(function () {
     });
   });
 
-
-  $(".publish").click(function () {
+  $(".publish").click(function() {
 
     let title = $(".pubTitle").val();
     let author = $(".pubAuthor").val();
@@ -115,6 +113,7 @@ $(document).ready(function () {
     // clear chapters array
     chapters = [];
   }
+
 });
 
 
