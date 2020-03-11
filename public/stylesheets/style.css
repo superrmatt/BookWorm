@@ -27,7 +27,8 @@ form.signup, form.login {  margin-top: 50px;
 .mainBookSearch { background-color:rgb(236, 235, 235);
                   border-radius: 10px;
                   box-shadow: 5px 4px 8px gray;
-                  margin-top: 15px;
+                  margin-top: 5%;
+                  margin-bottom:5%;
                   padding:20px;
                   height: 80vh;
 }
@@ -35,7 +36,8 @@ form.signup, form.login {  margin-top: 50px;
 .userSaved { 
               float:left;
               box-shadow: 5px 4px 8px gray;
-              margin-top: 15px;
+              margin-top: 5%;
+              margin-bottom:5%;
               margin-right: 10px;           
 }
 
