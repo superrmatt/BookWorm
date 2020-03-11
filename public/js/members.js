@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   let memberList = $(".member-list");
   let newBookSection = $(".new-book-section");
-  let userBooks = $(".savedBooksList");
+  let userBooks = $(".user-saved-books");
   let counter = 1; //this variable will track how many chapters for each book.
   let body;
   let chapters = [];
@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
-      userBooks.append(data[e].title + "<br></br>");
+      userBooks.append("<li class= 'list-group'>" + data[e].title + "<br> <div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead'> Read</button><button class= 'btn-primary btn-savedBooksDelete'> Delete</button></div>");
     }
 
   })
