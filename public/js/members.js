@@ -94,7 +94,7 @@ $(document).ready(function() {
     });
   }
 
-  function publish(title, author, body){
+  function publish(title, author, body,){
     $.post("api/publish", {
       title: title,
       author: author,
