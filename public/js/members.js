@@ -15,8 +15,7 @@ $(document).ready(function () {
     for (var e = 0; e < data.length; e++) {
       userBooks.append(data[e].title + "<br></br>");
     }
-
-  })
+  });
 
   $(".add-new").click(function () {
     memberList.empty();
@@ -39,8 +38,10 @@ $(document).ready(function () {
           thisBookIndex = thisBookIndex.replace(/\D/g, ''); //parse to return just the number
           let newTitle = $("input:checked").val();
           let author = data.items[thisBookIndex].volumeInfo.authors[0];
+          let image = data.items[thisBookIndex].volumeInfo.imageLinks.smallThumbnail;
+          console.log(image);
 
-          addBook(newTitle, author);
+          addBook(newTitle, author, image);
           $("#title" + thisBookIndex).remove() //now remove those html elements
           $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
 
@@ -95,11 +96,13 @@ $(document).ready(function () {
 
   });
 
-  function addBook(title, author) {
+  function addBook(title, author, image) {
     $.post("/api/addnew", {
       title: title,
-      author: author
+      author: author, 
+      image: image
     });
+    location.reload();
   }
 
   function publish(title, author, body) {

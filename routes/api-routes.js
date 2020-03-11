@@ -35,10 +35,11 @@ module.exports = function(app) {
         userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
-        isRead: false
+        isRead: false, 
+        image: req.body.image 
       })
       .then(function() {
-        //TODO: show some alert that books were added??? idk man
+        location.reload();
       })
       .catch(function(err) {
         res.status(401).json(err);
@@ -49,7 +50,7 @@ module.exports = function(app) {
     db.userBook
       .update({ isRead: req.body.isRead }, { where: req.params.id })
       .then(function() {
-        res.redirect(307, "/api/login");
+        location.reload();
       })
       .catch(function(err) {
         res.status(401).json(err);

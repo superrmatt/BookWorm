@@ -3,7 +3,8 @@ module.exports = function(sequelize, DataTypes) {
     userID: DataTypes.INTEGER,
     title: DataTypes.STRING,
     author: DataTypes.STRING,
-    isRead: DataTypes.BOOLEAN
+    isRead: DataTypes.BOOLEAN,
+    image: DataTypes.STRING
   });
   return userBook;
 };
