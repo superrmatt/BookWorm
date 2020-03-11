@@ -41,6 +41,8 @@ $(document).ready(function () {
           let image = data.items[thisBookIndex].volumeInfo.imageLinks.smallThumbnail;
           console.log(image);
 
+          download(image);
+
           addBook(newTitle, author, image);
           $("#title" + thisBookIndex).remove() //now remove those html elements
           $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
@@ -117,8 +119,7 @@ $(document).ready(function () {
   }
 
   function download(image){
-    fetch(image)
-    .then()
+    fetch(image);
   }
 
 });
