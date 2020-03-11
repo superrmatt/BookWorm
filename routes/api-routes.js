@@ -35,7 +35,8 @@ module.exports = function(app) {
         userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
-        isRead: false
+        isRead: false, 
+        image: req.body.image 
       })
       .then(function() {
         //TODO: show some alert that books were added??? idk man
