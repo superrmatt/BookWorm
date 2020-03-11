@@ -12,8 +12,8 @@ $(document).ready(function () {
   });
 
   $.get("/api/user_books").then(function (data) {
-    for (let i = 0; e < data.length; i++) {
-      userBooks.append(data[i].title + " by " + data[i].author +  "<br><hr><br>");
+    for (let i = 0; i < data.length; i++) {
+      userBooks.append(data[i].title + " by " + data[i].author +  "<hr><br>");
     }
   });
 
