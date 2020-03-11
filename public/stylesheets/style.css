@@ -83,7 +83,7 @@ h1 { font-family:'Shadows Into Light', cursive;
 .navbar-brand {  color: white;
 }
 
-.add-new {  padding: 10px;
+.add-new {  padding: 5px;
             border-radius: 10px;
             background-color: rgb(252, 125, 7);
             border-color: rgb(252, 125, 7);
@@ -94,11 +94,37 @@ h1 { font-family:'Shadows Into Light', cursive;
 #book-name {  margin: 10px;
 }
 
-.update-database {
-  padding: 7px;
-  border-radius: 10px;
-  background-color: rgb(233, 90, 233);
-  border-color:rgb(233, 90, 233);
-  margin:10px;
-  color: white;
+.update-database {  padding: 7px;
+                    border-radius: 10px;
+                    background-color: rgb(233, 90, 233);
+                    border-color:rgb(233, 90, 233);
+                    margin:10px;
+                    color: white;
+}
+
+.addCoverImage {  margin-top:20px;
   }
+
+.addChapter { text-align:center;
+              background-color: rgb(252, 125, 7);
+              border-color: rgb(252, 125, 7);
+              color: white;
+              padding: 5px;
+              border-radius: 10px;
+              margin: 10px;
+              float: right;
+  }
+  
+.publish {  background-color: rgb(233, 90, 233);
+            border-color:rgb(233, 90, 233);
+            color: white;
+            padding: 5px;
+            border-radius: 10px;
+            margin: 10px;
+            float: right;
+}
+
+.coverImage { padding: 5px;
+              border-radius: 5px;
+              margin: 10px;
+}
