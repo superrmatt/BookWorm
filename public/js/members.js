@@ -15,8 +15,7 @@ $(document).ready(function () {
     for (var e = 0; e < data.length; e++) {
       userBooks.append(data[e].title + "<br></br>");
     }
-
-  })
+  });
 
   $(".add-new").click(function () {
     memberList.empty();
@@ -100,6 +99,7 @@ $(document).ready(function () {
       title: title,
       author: author
     });
+    location.reload();
   }
 
   function publish(title, author, body) {
