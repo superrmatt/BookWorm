@@ -115,6 +115,12 @@ $(document).ready(function () {
     // clear chapters array
     chapters = [];
   }
+
+  function download(image){
+    fetch(image)
+    .then()
+  }
+
 });
 
 
