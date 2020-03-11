@@ -32,13 +32,11 @@ form.signup, form.login {  margin-top: 50px;
                   height: 80vh;
 }
 
-.userSaved {  background-color:rgb(236, 235, 235);
-              border-radius: 10px;
+.userSaved { 
               float:left;
               box-shadow: 5px 4px 8px gray;
               margin-top: 15px;
-              margin-right: 10px;
-              padding:20px;
+              margin-right: 10px;           
 }
 
 body { background-color: rgba(255, 252, 221, 0.911);
