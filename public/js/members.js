@@ -8,12 +8,12 @@ $(document).ready(function () {
   let body;
   let chapters = [];
 
-  //--------------Get user name for members page-----------------------------------
+//--------------Get user name for members page-----------------------------------
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.userName + "!");
   });
 
-  //--------------Get users saved books--------------------------------------------
+//--------------Get users saved books--------------------------------------------
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
       userBooks.append("<h5><b>" + data[e].title + "</h5></b>" + " By " + data[e].author + "<br></br>");
@@ -21,14 +21,14 @@ $(document).ready(function () {
   });
 
 
-  //--------------Get users saved work----------------------------------------------
+//---------Get users saved work-------------------------------------------------
   $.get("/api/published_works").then(function (data) {
     for (var i = 0; i < data.length; i++) {
-      usersWork.append("<h5><b>" + data[i].title + "</h5></b>" + " By " + data[i].author + data[i].path + "<br><br>");
+      usersWork.append("<a target='_blank' href='" + data[i].path + "'><h5><b>" + data[i].title + "</h5></b><a/>" + " By " + data[i].author + "<br><br>");
     }
   });
 
-  //-------------------Add new book to saved book list / google books api ajax call----------------------------------
+//------Add new book to saved book list / google books api ajax call-----------
   $(".add-new").click(function () {
     memberList.empty();
     $(".update-database").remove();
@@ -63,7 +63,7 @@ $(document).ready(function () {
     });
   });
 
-  //---------Publish work-------------------------------------------------
+//----------Publish work-------------------------------------------------------
   $(".publish").click(function () {
 
     let title = $(".pubTitle").val();
@@ -86,7 +86,7 @@ $(document).ready(function () {
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
 
-  //---------Add chapter---------------------------------------------------
+//----------Add chapter--------------------------------------------------------
   $(".addChapter").click(function () {
 
     // obtain chapter information and parse
@@ -111,7 +111,7 @@ $(document).ready(function () {
 
   });
 
-//----------Add user works cover image---------------------------
+//----------Add user works cover image-----------------------------------------
   $(".coverImage").click(function () {
     console.log("Sdffs");
     var blobFile = $('.coverImage').files[0];
@@ -137,7 +137,7 @@ $(document).ready(function () {
   })
 
 
-
+//----------Posts--------------------------------------------------------------
   function addBook(title, author, image) {
     $.post("/api/addnew", {
       title: title,
