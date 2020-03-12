@@ -25,27 +25,31 @@
   <div class="container">
     <div class="row">
 
-<!------------------Saved Searches and User work - Main Left Div------------------>
-      <div class="userSaved col-md-4">
-        
+      <!------------------Saved Searches and User work - Main Left Div------------------>
+      <div class="userSaved col-md-4 col-sm-12">
 
-        <div class="card mb-3 overflow-auto" style="max-width: 18rem; height:275px;">
-          <div class="card-header"><h3>Saved Books</h3></div>
+
+        <div class="card mb-3 overflow-auto" style=" height:275px;">
+          <div class="card-header">
+            <h3>Saved Books</h3>
+          </div>
           <div class="card-body">
             <div class="savedBooks">
               <div class="savedBooksList">
-              
+
               </div>
             </div>
           </div>
         </div>
 
-        <div class="card mb-3 overflow-auto" style="max-width: 18rem; height:275px;">
-          <div class="card-header"><h3>Users Work</h3></div>
+        <div class="card mb-3 overflow-auto" style="height:275px;">
+          <div class="card-header">
+            <h3>Users Work</h3>
+          </div>
           <div class="card-body">
             <div class="usersWork">
               <div class="savedWorkList">
-              
+
               </div>
             </div>
           </div>
@@ -54,19 +58,19 @@
 
       </div>
 
-<!--------------Book Search & Publish - Main Right Div--------------->
-      <div class="mainBookSearch overflow-auto col-md-7">
+      <!--------------Book Search & Publish - Main Right Div--------------->
+      <div class="mainBookSearch overflow-auto col-md-7 col-sm-12">
         <h2>Welcome, <span class="member-name"></span></h2>
 
         <div class="new-book-section">
-            <div id="addAlert"></div>
+          <div id="addAlert"></div>
           <input type="text" id="book-name">
           <button class="add-new">Search</button>
         </div>
-          <form class="member-list">
-            
-          </form>
-             
+        <form class="member-list">
+
+        </form>
+
         <!--------------EPUB ZONE--------------->
         <hr>
         <label for="basic-url">EPUB</label>
@@ -110,12 +114,12 @@
           <input type="file" id="img" name="img" accept="image/*"><br>
           <input class="coverImage" type="submit">
         </form>
-        
+
         <div id="pubAlert"></div>
 
-        <button class="publish" onclick="setTimeout(pubTimeout, 3000)">Publish</button> 
+        <button class="publish" onclick="setTimeout(pubTimeout, 3000)">Publish</button>
         <button class="addChapter" onclick="setTimeout(pubTimeout, 3000)">Add Chapter</button>
-     
+
 
       </div>
     </div>
@@ -123,13 +127,13 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
-      function pubTimeout(){
-        $("#pubAlert").empty();
-      }
+    function pubTimeout() {
+      $("#pubAlert").empty();
+    }
 
-      function addTimeout(){
-        $("#addAlert").empty();
-      }
+    function addTimeout() {
+      $("#addAlert").empty();
+    }
   </script>
   <script type="text/javascript" src="js/members.js"></script>
 </body>

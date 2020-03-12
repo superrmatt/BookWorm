@@ -35,10 +35,13 @@ form.signup, form.login {  margin-top: 50px;
 
 .userSaved { 
               float:left;
-              box-shadow: 5px 4px 8px gray;
               margin-top: 5%;
               margin-bottom:5%;
               margin-right: 10px;           
+}
+
+.card { box-shadow: 5px 4px 8px gray;
+        width: 100%;
 }
 
 body { background-color: rgba(255, 252, 221, 0.911);

@@ -102,7 +102,7 @@ module.exports = function(app) {
   app.get("/api/published_works", function(req, res) {
     db.publishedWork
       .findAll({
-        attributes: ["title", "author", "body"]
+        attributes: ["title", "author", "path"]
       })
       .then(function(response) {
         res.json(response);
