@@ -2,33 +2,39 @@ $(document).ready(function () {
 
   let memberList = $(".member-list");
   let newBookSection = $(".new-book-section");
-  let userBooks = $(".savedBooksList");
-  let usersWork = $(".savedWorkList");
+  let userBooks = $(".user-saved-books");
   let counter = 1; //this variable will track how many chapters for each book.
   let body;
   let chapters = [];
 
-//--------------Get user name for members page-----------------------------------
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.userName + "!");
   });
 
-//--------------Get users saved books--------------------------------------------
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
-      userBooks.append("<h5><b>" + data[e].title + "</h5></b>" + " By " + data[e].author + "<br></br>");
+      userBooks.append("<li class= 'list-group books-list-item'>" + data[e].title + "<br> <div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= '"+ data[e].id+"' value= 'false'> Read</button><button class= 'btn-primary btn-savedBooksDelete'> Delete</button></div>");
     }
   });
 
+  $(".user-saved-books").on('click','.btn-savedBooksRead',function(){
+    let id = $(this).attr('name');
+    let userBookStatus = "true";
+    if ($(this).attr('value') == true) {
+      userBookStatus = "false";
+    } 
+    $.ajax("/api/changeread/" + id, {
+      type: "PUT",
+      data: userBookStatus
+    }).then(function(){
+      console.log("book status es: "+ userBookStatus);
+    })
+   
 
-//---------Get users saved work-------------------------------------------------
-  $.get("/api/published_works").then(function (data) {
-    for (var i = 0; i < data.length; i++) {
-      usersWork.append("<a target='_blank' href='" + data[i].path + "'><h5><b>" + data[i].title + "</h5></b><a/>" + " By " + data[i].author + "<br><br>");
-    }
-  });
+    console.log(userBookStatus);
+    //console.log($(this).attr('name'));
+  })
 
-//------Add new book to saved book list / google books api ajax call-----------
   $(".add-new").click(function () {
     memberList.empty();
     $(".update-database").remove();
@@ -63,17 +69,16 @@ $(document).ready(function () {
     });
   });
 
-//----------Publish work-------------------------------------------------------
+
   $(".publish").click(function () {
 
     let title = $(".pubTitle").val();
     let author = $(".pubAuthor").val();
-
     //if the counter is 0, it means no chapters have been added, meaning we publish entire body as chapter 1.
     if (counter === 0) {
       let body = $(".pubBody").val();
 
-      //parse body string to start with paragraph, replace all instances of 'enter;' with a new paragraph block and end with end paragraph block
+      //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
       body = "<p>" + body;
       body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
       body = body + "</p>";
@@ -82,11 +87,9 @@ $(document).ready(function () {
     }
 
     publish(title, author, body);
-
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
 
-//----------Add chapter--------------------------------------------------------
   $(".addChapter").click(function () {
 
     // obtain chapter information and parse
@@ -111,37 +114,10 @@ $(document).ready(function () {
 
   });
 
-//----------Add user works cover image-----------------------------------------
-  $(".coverImage").click(function () {
-    console.log("Sdffs");
-    var blobFile = $('.coverImage').files[0];
-    var formData = new FormData();
-    formData.append("fileToUpload", blobFile);
-    console.log(blobFile);
-    console.log(formData);
-    console.log("sfsdf");
-    alert("sdfsfg");
-    $.ajax({
-      url: "/api/cover",
-      type: "POST",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function (response) {
-        // .. do something
-      },
-      error: function (jqXHR, textStatus, errorMessage) {
-        console.log(errorMessage); // Optional
-      }
-    });
-  })
-
-
-//----------Posts--------------------------------------------------------------
   function addBook(title, author, image) {
     $.post("/api/addnew", {
       title: title,
-      author: author,
+      author: author, 
       image: image
     });
     location.reload();
@@ -156,8 +132,102 @@ $(document).ready(function () {
     });
     // clear chapters array
     chapters = [];
-    location.reload();
   }
-
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+//========Shelby Nonsense======================================================
+
+// $(".searchByTitle").click(function(){
+//     memberList.empty();
+//     $(".update-database").remove();
+//     var title = $("#book-name").val();
+//   $.ajax({
+//     url: "https://www.googleapis.com/books/v1/volumes?q=intitle+" + title,
+//     method: "GET",
+//     success: function(data) {
+//       for (var i = 0; i < data.items.length; i++) {
+//         memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+//       }
+//       newBookSection.append("<button class=\"update-database\">Add Selected</button>");
+
+//       $(document).delegate(".update-database","click", function(e) {
+//         e.preventDefault();
+//         var thisBookIndex = $("input:Checked").attr("id");
+//         thisBookIndex = thisBookIndex.replace(/\D/g,''); //parse to return just the number
+//         var newTitle = $("input:checked").val();
+//         var author = data.items[thisBookIndex].volumeInfo.authors[0];
+
+//         console.log("---------------NEW BOOK!!---------------")
+//         console.log("thisBookIndex = " + thisBookIndex);
+//         console.log("newTitle = " + newTitle);
+//         console.log("author = " + author);
+
+
+//         addBook(newTitle, author);
+//         $("#title" + thisBookIndex).remove() //now remove those html elements
+//         $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
+//       });
+//     }
+//   });
+// });
+
+
+
+// $(".searchByAuthor").click(function(){
+//     memberList.empty();
+//     $(".update-database").remove();
+//     var title = $("#book-name").val();
+//   $.ajax({
+//     url: "https://www.googleapis.com/books/v1/volumes?q=inauthor+" + title,
+//     method: "GET",
+//     success: function(data) {
+//       for (var i = 0; i < data.items.length; i++) {
+//         memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+//       }
+//       newBookSection.append("<button class=\"update-database\">Add Selected</button>");
+
+//       $(document).delegate(".update-database","click", function(e) {
+//         e.preventDefault();
+//         var thisBookIndex = $("input:Checked").attr("id");
+//         thisBookIndex = thisBookIndex.replace(/\D/g,''); //parse to return just the number
+//         var newTitle = $("input:checked").val();
+//         var author = data.items[thisBookIndex].volumeInfo.authors[0];
+
+//         console.log("---------------NEW BOOK!!---------------")
+//         console.log("thisBookIndex = " + thisBookIndex);
+//         console.log("newTitle = " + newTitle);
+//         console.log("author = " + author);
+
+
+//         addBook(newTitle, author);
+//         $("#title" + thisBookIndex).remove() //now remove those html elements
+//         $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
+//       });
+//     }
+//   });
+// });
+
+// function addBook(title, author){
+//   $.post("/api/addnew", {
+//     title: title,
+//     author: author
+//   })
+//     .then(function() {
+//       //show some alert that books were added??? idk man
+//     })
+//     .catch(function(err) {
+//       res.status(401).json(err);
+//     });
+// }
+// });

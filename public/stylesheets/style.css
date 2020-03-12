@@ -138,3 +138,41 @@ h2 {  font-family:'Shadows Into Light', cursive;
       font-size: 50pt;
 }
 
+.btn-savedBooksRead{
+  border-style: solid;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-width: 1px;
+  border-color: #dddddd;
+}
+
+.btn-savedBooksDelete{
+                      border-style: solid;
+                      border-top-right-radius: 5px;
+                      border-bottom-right-radius: 5px;
+                      border-width: 1px;
+                      border-color: #dddddd;
+}
+.user-saved-books{
+  padding: 0;
+}
+.books-list-item{
+  text-align: center;
+  align-items: center;
+  background-color: rgb(236, 235, 235);
+  margin: 5px;
+  padding: 5px;
+  border-style: solid;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #dddddd;
+}
+.card-body{
+  padding: .25rem;
+}
+.card-header{
+   background-color: rgb(236, 235, 235);
+
+}
