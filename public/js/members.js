@@ -16,7 +16,7 @@ $(document).ready(function () {
   //--------------Get users saved books--------------------------------------------
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
-      userBooks.append("<b>" + data[e].title + "</b>" + " By " + data[e].author + "<br></br>");
+      userBooks.append("<h5><b>" + data[e].title + "</h5></b>" + " By " + data[e].author + "<br></br>");
     }
   });
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
   //--------------Get users saved work----------------------------------------------
   $.get("/api/published_works").then(function (data) {
     for (var i = 0; i < data.length; i++) {
-      usersWork.append("<li>" + data[i].title + "</li><li>" + data[i].author + "</li><li>" + data[i].path + "</li>");
+      usersWork.append("<h5><b>" + data[i].title + "</h5></b>" + " By " + data[i].author + data[i].path + "<br><br>");
     }
   });
 
@@ -111,7 +111,7 @@ $(document).ready(function () {
 
   });
 
-
+//----------Add user works cover image---------------------------
   $(".coverImage").click(function () {
     console.log("Sdffs");
     var blobFile = $('.coverImage').files[0];
@@ -159,14 +159,5 @@ $(document).ready(function () {
     location.reload();
   }
 
-
-  // function addUserWork(title, author, filePath) {
-  //   $.post("/api/publish_works", {
-  //     title: title,
-  //     author: author,
-  //     path: filePath
-  //   });
-  //   location.reload();
-  // }
 
 });
