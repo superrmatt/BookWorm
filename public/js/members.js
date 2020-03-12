@@ -12,27 +12,43 @@ $(document).ready(function () {
   });
 
   $.get("/api/user_books").then(function (data) {
+    console.log(data)
     for (var e = 0; e < data.length; e++) {
-      userBooks.append("<li class= 'list-group books-list-item'>" + data[e].title + "<br> <div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= '"+ data[e].id+"' value= 'false'> Read</button><button class= 'btn-primary btn-savedBooksDelete'> Delete</button></div>");
+      let statusTitle = "Read";
+      let statusValue = "false";
+      if (data[e].isRead === true) {
+        statusTitle = "Unread"
+        statusValue = "true"
+      }
+      userBooks.append("<li class= 'list-group books-list-item'>" + data[e].title + "<br> <div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[e].id + " value= " + statusValue + ">" + statusTitle + "</button><button class= 'btn-primary btn-savedBooksDelete' name= " + data[e].id + "> Delete</button></div>");
+
     }
   });
 
-  $(".user-saved-books").on('click','.btn-savedBooksRead',function(){
-    let id = $(this).attr('name');
+  $(".user-saved-books").on('click', '.btn-savedBooksRead', function () {
+    let id = $(this).attr('name')
     let userBookStatus = "true";
-    if ($(this).attr('value') == true) {
+    if ($(this).attr('value') === "true") {
       userBookStatus = "false";
-    } 
+    }
     $.ajax("/api/changeread/" + id, {
       type: "PUT",
-      data: userBookStatus
-    }).then(function(){
-      console.log("book status es: "+ userBookStatus);
+      data: { isRead: userBookStatus }
+    }).then(function (result) {
+      console.log(result)
+      location.reload()
     })
-   
+  })
 
-    console.log(userBookStatus);
-    //console.log($(this).attr('name'));
+
+  $(".user-saved-books").on('click', '.btn-savedBooksDelete', function () {
+    let id = $(this).attr('name')
+    $.ajax("/api/delete/" + id, {
+      type: "DELETE",
+    }).then(function (result) {
+      console.log(result)
+      location.reload()
+    })
   })
 
   $(".add-new").click(function () {
@@ -117,7 +133,7 @@ $(document).ready(function () {
   function addBook(title, author, image) {
     $.post("/api/addnew", {
       title: title,
-      author: author, 
+      author: author,
       image: image
     });
     location.reload();
