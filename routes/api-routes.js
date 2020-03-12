@@ -50,8 +50,8 @@ module.exports = function (app) {
     db.userBook
       .update({ isRead: req.body.isRead }, { where: { id: req.params.id } })
       .then(function (data) {
-        console.log(data)
-        res.json("done")
+        console.log(data);
+        res.json("done");
       })
       .catch(function (err) {
         res.status(401).json(err);
@@ -139,12 +139,11 @@ module.exports = function (app) {
     db.userBook
       .destroy({ where: { id: req.params.id } })
       .then(function (data) {
-        console.log(data)
-        res.json("delete")
+        console.log(data);
+        res.json("delete");
       })
       .catch(function (err) {
         res.status(401).json(err);
       });
   });
-
-}
+};

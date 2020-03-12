@@ -28,7 +28,6 @@ $(document).ready(function () {
   $(".user-saved-books").on('click', '.btn-savedBooksRead', function () {
     let id = $(this).attr('name')
     let userBookStatus = "true";
-    console.log($(this).attr("value"))
     if ($(this).attr('value') === "true") {
       userBookStatus = "false";
     }
@@ -39,9 +38,6 @@ $(document).ready(function () {
       console.log(result)
       location.reload()
     })
-
-
-    //console.log($(this).attr('name'));
   })
 
 
@@ -53,8 +49,6 @@ $(document).ready(function () {
       console.log(result)
       location.reload()
     })
-
-
   })
 
   $(".add-new").click(function () {

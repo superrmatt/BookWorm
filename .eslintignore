@@ -1,8 +1,4 @@
-node_modules
-package.json
-package-lock.json
-README.md
-.gitignore
-.eslintrc.json
-.travis.yml
-public/js/members.js
+config/
+public/
+models/
+routes/
