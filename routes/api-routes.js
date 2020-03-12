@@ -35,8 +35,8 @@ module.exports = function(app) {
         userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
-        isRead: false, 
-        image: req.body.image 
+        isRead: false,
+        image: req.body.image
       })
       .then(function() {
         location.reload();
@@ -102,7 +102,7 @@ module.exports = function(app) {
   app.get("/api/published_works", function(req, res) {
     db.publishedWork
       .findAll({
-        attributes: ["title", "author", "body"]
+        attributes: ["title", "author", "path"]
       })
       .then(function(response) {
         res.json(response);

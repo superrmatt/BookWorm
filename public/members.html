@@ -8,8 +8,15 @@
   <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<<<<<<< HEAD
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
+=======
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  </head>
+>>>>>>> eac471a12368fc0fe72b950cb3f41dc24c9252fd
 
 <body id="membersBackground">
   <nav class="navbar navbar-default">
@@ -26,25 +33,40 @@
     <div class="row">
 
       <!------------------Saved Searches and User work - Main Left Div------------------>
+<<<<<<< HEAD
       <div class="userSaved col-md-4">
 
 
         <div class="card mb-3 overflow-auto" style="max-width: 22rem; height:275px;">
+=======
+      <div class="userSaved col-md-4 col-sm-12">
+
+
+        <div class="card bg-light mb-3 overflow-auto" style="height:275px;">
+>>>>>>> eac471a12368fc0fe72b950cb3f41dc24c9252fd
           <div class="card-header">
             <h3>Saved Books</h3>
           </div>
           <div class="card-body">
             <div class="savedBooks">
               <div class="savedBooksList">
+<<<<<<< HEAD
                 <ul class="user-saved-books">
 
                 </ul>
+=======
+
+>>>>>>> eac471a12368fc0fe72b950cb3f41dc24c9252fd
               </div>
             </div>
           </div>
         </div>
 
+<<<<<<< HEAD
         <div class="card mb-3 overflow-auto" style="max-width: 22rem; height:275px;">
+=======
+        <div class="card bg-light mb-3 overflow-auto" style="height:275px;">
+>>>>>>> eac471a12368fc0fe72b950cb3f41dc24c9252fd
           <div class="card-header">
             <h3>Users Work</h3>
           </div>
@@ -61,13 +83,17 @@
       </div>
 
       <!--------------Book Search & Publish - Main Right Div--------------->
+<<<<<<< HEAD
       <div class="mainBookSearch overflow-auto col-md-7">
+=======
+      <div class="mainBookSearch overflow-auto col-md-7 col-sm-12">
+>>>>>>> eac471a12368fc0fe72b950cb3f41dc24c9252fd
         <h2>Welcome, <span class="member-name"></span></h2>
-
+     
         <div class="new-book-section">
           <div id="addAlert"></div>
           <input type="text" id="book-name">
-          <button class="add-new">search</button>
+          <button class="add-new">Search</button>
         </div>
         <form class="member-list">
 
@@ -110,10 +136,25 @@
           </div>
           <textarea class="pubBody form-control" aria-label="With textarea"></textarea>
         </div>
+<<<<<<< HEAD
         <div id="pubAlert"></div>
 
         <button class="addChapter btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Add Chapter</button>
         <button class="publish btn btn-primary" onclick="setTimeout(pubTimeout, 3000)">Publish</button>
+=======
+
+        <form class="addCoverImage">
+          <label for="img">Select image:</label>
+          <input type="file" id="img" name="img" accept="image/*"><br>
+          <input class="coverImage" type="submit">
+        </form>
+
+        <div id="pubAlert"></div>
+
+        <button class="publish" onclick="setTimeout(pubTimeout, 3000)">Publish</button>
+        <button class="addChapter" onclick="setTimeout(pubTimeout, 3000)">Add Chapter</button>
+
+>>>>>>> eac471a12368fc0fe72b950cb3f41dc24c9252fd
 
       </div>
     </div>
