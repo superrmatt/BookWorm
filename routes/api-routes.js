@@ -88,7 +88,7 @@ module.exports = function(app) {
       //! Sending back a password, even a hashed password, isn't a good idea
       db.userBook
         .findAll({
-          attributes: ["title", "author", "isRead"],
+          attributes: ["title", "author", "isRead", "id"],
           where: {
             userID: req.user.id
           }

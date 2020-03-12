@@ -13,9 +13,28 @@ $(document).ready(function () {
 
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
-      userBooks.append("<li class= 'list-group'>" + data[e].title + "<br> <div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead'> Read</button><button class= 'btn-primary btn-savedBooksDelete'> Delete</button></div>");
+      userBooks.append("<li class= 'list-group books-list-item'>" + data[e].title + "<br> <div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= '"+ data[e].id+"' value= 'false'> Read</button><button class= 'btn-primary btn-savedBooksDelete'> Delete</button></div>");
     }
   });
+
+  $(".user-saved-books").on('click','.btn-savedBooksRead',function(){
+    let id = $(this).attr('name');
+    console.log(id);
+    let userBookStatus = "true";
+    if ($(this).attr('value') == true) {
+      userBookStatus = "false";
+    } 
+    $.ajax("/api/changeread/" + id, {
+      type: "PUT",
+      data: userBookStatus
+    }).then(function(){
+      console.log("book status es: "+ userBookStatus);
+    })
+   
+
+    console.log(userBookStatus);
+    //console.log($(this).attr('name'));
+  })
 
   $(".add-new").click(function () {
     memberList.empty();

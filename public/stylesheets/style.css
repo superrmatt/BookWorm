@@ -95,27 +95,48 @@ h1 { font-family:'Shadows Into Light', cursive;
 }
 
 .update-database {
-  padding: 7px;
-  border-radius: 10px;
-  background-color: rgb(233, 90, 233);
-  border-color:rgb(233, 90, 233);
-  margin:10px;
-  color: white;
+                    padding: 7px;
+                    border-radius: 10px;
+                    background-color: rgb(233, 90, 233);
+                    border-color:rgb(233, 90, 233);
+                    margin:10px;
+                    color: white;
   }
 
 
   .btn-savedBooksRead{
-    border-style: solid;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-width: 1px;
-    border-color: #dddddd;
+                      border-style: solid;
+                      border-top-left-radius: 5px;
+                      border-bottom-left-radius: 5px;
+                      border-width: 1px;
+                      border-color: #dddddd;
   }
 
   .btn-savedBooksDelete{
+                        border-style: solid;
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                        border-width: 1px;
+                        border-color: #dddddd;
+  }
+  .user-saved-books{
+    padding: 0;
+  }
+  .books-list-item{
+    text-align: center;
+    align-items: center;
+    background-color: rgb(236, 235, 235);
+    margin: 5px;
+    padding: 5px;
     border-style: solid;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     border-width: 1px;
     border-color: #dddddd;
+  }
+  .card-body{
+    padding: .25rem;
+  }
+  .card-header{
+     background-color: rgb(236, 235, 235);
+
   }
