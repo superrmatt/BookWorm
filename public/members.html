@@ -10,14 +10,16 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="stylesheets/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
-  </head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+</head>
 
 <body id="membersBackground">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="index.html">
-          Logout
+          <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </div>
     </div>
@@ -66,7 +68,7 @@
         <h2>Welcome, <span class="member-name"></span></h2>
         <hr>
         <div class="new-book-section">
-          <h5>Search a book to add to your list.</h5>
+          <h5>Find books to add to your list.</h5>
           <div id="addAlert"></div>
           <input type="text" id="book-name">
           <button class="btn-primary add-new">Search</button>
@@ -77,7 +79,7 @@
 
         <!--------------EPUB ZONE--------------->
         <hr>
-        <label for="basic-url"><h5>Publish your own work below...</h5></label>
+        <label for="basic-url"><h5>Publish your own work below.</h5></label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Title</span>
@@ -112,11 +114,11 @@
           </div>
           <textarea class="pubBody form-control" aria-label="With textarea"></textarea>
         </div>
-
+        <p>In order to read your published work download the <a targer="_blank" href="https://chrome.google.com/webstore/detail/epubreader/jhhclmfgfllimlhabjkgkeebkbiadflb/related?hl=en">EPUB Chrome extension!</a></p>
         <div id="pubAlert"></div>
 
-        <button class="publish" onclick="setTimeout(pubTimeout, 3000)">Publish</button>
-        <button class="addChapter" onclick="setTimeout(pubTimeout, 3000)">Add Chapter</button>
+        <button class="publish" onclick="setTimeout(pubTimeout, 3000)"><i class="fas fa-book"></i> Publish</button>
+        <button class="addChapter" onclick="setTimeout(pubTimeout, 3000)"><i class="fas fa-plus"></i> Chapter</button>
 
 
       </div>
