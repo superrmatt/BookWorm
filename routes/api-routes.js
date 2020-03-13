@@ -15,7 +15,6 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
-    console.log(req.body.userName);
     db.User.create({
       userName: req.body.userName,
       email: req.body.email,
@@ -50,11 +49,10 @@ module.exports = function (app) {
             id: req.params.id 
           } 
     }).then(function (data) {
-        console.log(data);
-        res.json("done");
-      }).catch(function (err) {
-        res.status(401).json(err);
-      });
+      res.json("done");
+    }).catch(function (err) {
+      res.status(401).json(err);
+    });
   });
 
   // Route for logging user out
@@ -106,21 +104,25 @@ module.exports = function (app) {
   });
 
   app.post("/api/publish", function (req, res) {
-    let filePath = "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
-    db.publishedWork.create({
+    let filePath =
+      "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
+    db.publishedWork
+      .create({
         title: req.body.title,
         author: req.body.author,
         path: filePath
-      }).then(function () {
+      })
+      .then(function () {
         let option = {
-          title: req.body.title, 
-          author: req.body.author, 
-          cover: "../BookWorm/public/stylesheets/images/library.jpg",
+          title: req.body.title, // *Required, title of the book.
+          author: req.body.author, // *Required, name of the author.
+          cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
           content: req.body.body
         };
 
         new Epub(option, filePath);
-      }).catch(function (err) {
+      })
+      .catch(function (err) {
         res.status(401).json(err);
       });
   });
@@ -131,7 +133,6 @@ module.exports = function (app) {
         id: req.params.id 
       } 
     }).then(function (data) {
-      console.log(data);
       res.json("delete");
     }).catch(function (err) {
       res.status(401).json(err);

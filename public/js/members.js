@@ -4,7 +4,7 @@ $(document).ready(function () {
   let newBookSection = $(".new-book-section");
   let userBooks = $(".user-saved-books");
   let usersWork = $(".savedWorkList");
-  let counter = 0; //this variable will track how many chapters for each book.
+  let counter = 1; //this variable will track how many chapters for each book.
   let body;
   let chapters = [];
 
@@ -98,30 +98,31 @@ $(document).ready(function () {
 
     let title = $(".pubTitle").val();
     let author = $(".pubAuthor").val();
-
-    let body = chapters;
-    //if the counter is 0, it means no chapters have been added, meaning we publish entire body as chapter 1.
+    //if the counter is 1, it means no chapters have been added, meaning we publish entire body as chapter 1.
     if (counter === 1) {
-      body = $(".pubBody").val();
+      body = {
+        title: title,
+        author: author,
+        data: $(".pubBody").val()
+      };
 
       //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
-      body = "<p>" + body;
-      body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
-      body = body + "</p>";
+      body.body = "<p>" + body.body;
+      body.body = body.body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
+      body.body = body.body + "</p>";
+      chapters.push(body);
     }
-    console.log(title);
-    console.log(author);
-    console.log(body);
+    body = chapters;
 
     publish(title, author, body);
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
 
-  //----Click event for adding a chapter from EPUB work--------------------------------
+  //----Click event for adding a chapter to EPUB work--------------------------------
   $(".addChapter").click(function () {
 
     // obtain chapter information and parse
-    let body = $(".pubBody").val();
+    body = $(".pubBody").val();
     body = "<p>" + body;
     body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
     body = body + "</p>";
