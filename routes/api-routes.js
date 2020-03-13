@@ -20,39 +20,39 @@ module.exports = function (app) {
       userName: req.body.userName,
       email: req.body.email,
       password: req.body.password
-    })
-      .then(function () {
+    }).then(function () {
         res.redirect(307, "/api/login");
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         res.status(401).json(err);
       });
   });
 
   app.post("/api/addnew", function (req, res) {
-    db.userBook
-      .create({
+    db.userBook.create({
         userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
         isRead: false
-      })
-      .then(function () {
+      }).then(function () {
         location.reload();
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         res.status(401).json(err);
       });
   });
 
   app.put("/api/changeread/:id", function (req, res) {
-    db.userBook
-      .update({ isRead: req.body.isRead }, { where: { id: req.params.id } })
-      .then(function (data) {
+    db.userBook.update({ 
+        isRead: req.body.isRead 
+      }, 
+      {  
+        where: 
+          { 
+            id: req.params.id 
+          } 
+    }).then(function (data) {
         console.log(data);
         res.json("done");
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         res.status(401).json(err);
       });
   });
@@ -86,63 +86,55 @@ module.exports = function (app) {
     } else {
       //! Otherwise send back the user's email and id
       //! Sending back a password, even a hashed password, isn't a good idea
-      db.userBook
-        .findAll({
+      db.userBook.findAll({
           attributes: ["id", "title", "author", "isRead"],
           where: {
             userID: req.user.id
           }
-        })
-        .then(function (response) {
+        }).then(function (response) {
           res.json(response);
         });
     }
   });
 
   app.get("/api/published_works", function (req, res) {
-    db.publishedWork
-      .findAll({
+    db.publishedWork.findAll({
         attributes: ["title", "author", "path"]
-      })
-      .then(function (response) {
+      }).then(function (response) {
         res.json(response);
       });
   });
 
   app.post("/api/publish", function (req, res) {
-    let filePath =
-      "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
-    db.publishedWork
-      .create({
+    let filePath = "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
+    db.publishedWork.create({
         title: req.body.title,
         author: req.body.author,
         path: filePath
-      })
-      .then(function () {
+      }).then(function () {
         let option = {
-          title: req.body.title, // *Required, title of the book.
-          author: req.body.author, // *Required, name of the author.
-          cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
+          title: req.body.title, 
+          author: req.body.author, 
+          cover: "../BookWorm/public/stylesheets/images/library.jpg",
           content: req.body.body
         };
 
-        //eslint-disable-next-line prettier/prettier
         new Epub(option, filePath);
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         res.status(401).json(err);
       });
   });
 
   app.delete("/api/delete/:id", function (req, res) {
-    db.userBook
-      .destroy({ where: { id: req.params.id } })
-      .then(function (data) {
-        console.log(data);
-        res.json("delete");
-      })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
+    db.userBook.destroy({ 
+      where: { 
+        id: req.params.id 
+      } 
+    }).then(function (data) {
+      console.log(data);
+      res.json("delete");
+    }).catch(function (err) {
+      res.status(401).json(err);
+    });
   });
 };

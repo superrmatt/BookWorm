@@ -4,7 +4,7 @@ $(document).ready(function () {
   let newBookSection = $(".new-book-section");
   let userBooks = $(".user-saved-books");
   let usersWork = $(".savedWorkList");
-  let counter = 1; //this variable will track how many chapters for each book.
+  let counter = 0; //this variable will track how many chapters for each book.
   let body;
   let chapters = [];
 
@@ -98,17 +98,20 @@ $(document).ready(function () {
 
     let title = $(".pubTitle").val();
     let author = $(".pubAuthor").val();
+
+    let body = chapters;
     //if the counter is 0, it means no chapters have been added, meaning we publish entire body as chapter 1.
-    if (counter === 0) {
-      let body = $(".pubBody").val();
+    if (counter === 1) {
+      body = $(".pubBody").val();
 
       //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
       body = "<p>" + body;
       body = body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
       body = body + "</p>";
-    } else {
-      body = chapters;
     }
+    console.log(title);
+    console.log(author);
+    console.log(body);
 
     publish(title, author, body);
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
