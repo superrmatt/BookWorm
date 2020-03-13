@@ -43,7 +43,7 @@ a:hover { color: rgb(56, 29, 56);
 }
 
 .userSaved {  float:left;
-              margin-top: 5%;
+              margin-top:5%;
               margin-bottom:5%;
               margin-right: 10px;           
 }
@@ -89,7 +89,6 @@ a:hover { color: rgb(56, 29, 56);
 
 .add-new {  padding: 5px;
             border-radius: 7px;
-         
             margin:10px;
             color: white;
 }
@@ -98,10 +97,8 @@ a:hover { color: rgb(56, 29, 56);
 }
 
 .update-database {  padding: 7px;
-                    border-radius: 7px;
-                   
-                    margin:10px;
-                    
+                    border-radius: 7px;                  
+                    margin:10px;         
 }
 
 .addCoverImage {  margin-top: 20px;
