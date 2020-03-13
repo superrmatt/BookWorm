@@ -119,11 +119,13 @@ $(document).ready(function () {
    * Click event for publishing EPUB work.
    */
   $(".publish").click(function () {
+    let title = $(".pubTitle").val(),
+        author = $(".pubAuthor").val();
     //if the counter is 1, it means no chapters have been added, meaning we publish entire body as chapter 1.
     if (counter === 1) {
       body = {
-        title: $(".pubTitle").val(),
-        author: $(".pubAuthor").val(),
+        title: title,
+        author: author,
         data: $(".pubBody").val()
       };
 
