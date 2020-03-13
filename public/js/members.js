@@ -1,59 +1,80 @@
 $(document).ready(function () {
 
-  let memberList = $(".member-list");
-  let newBookSection = $(".new-book-section");
-  let userBooks = $(".user-saved-books");
-  let usersWork = $(".savedWorkList");
-  let counter = 1; //this variable will track how many chapters for each book.
-  let body;
-  let chapters = [];
+  /**
+   * JQuery variables used to hold reference throughout this code.
+   */
+  let memberList = $(".member-list"),
+      newBookSection = $(".new-book-section"),
+      userBooks = $(".user-saved-books"),
+      usersWork = $(".savedWorkList");
 
-  //---------Get users name to display on members page----------------------------
+  /**
+   * Variables to track values for EPUB.
+   * Counter for chapter count
+   * Body for text as string with HTML formatting, and further foramtted into an object when needed.
+   * Chapters, array of body object (body is manipulated into an object in the publish and add-chapter listeners).
+   */
+  let counter = 1, //this variable will track how many chapters for each book.
+      body,
+      chapters = [];
+
+  /**
+   * Get user's name to display on members page.
+   * Also obtains other user data, which at this point is not used on this page, but can be useful in the future and used in back end.
+   */
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.userName + "!");
   });
 
-  //---------Get users saved books------------------------------------------------
+  /**
+   * Get logged in user's saved books and updates HTML.
+   */
   $.get("/api/user_books").then(function (data) {
-    for (var e = 0; e < data.length; e++) {
-      let statusTitle = "Read";
-      let statusValue = "false";
-      if (data[e].isRead === true) {
+    for (let i = 0; i < data.length; i++) {
+      let statusTitle = "Read",
+          statusValue = "false";
+      if (data[i].isRead === true) {
         statusTitle = "Unread"
         statusValue = "true"
       }
-      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[e].title + "</b>By " + data[e].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[e].id + " value= " + statusValue + ">" + statusTitle + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= " + data[e].id + "><i class='fas fa-trash-alt'></i> </button></div>");
-
+      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[i].title + "</b>By " + data[i].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[i].id + " value= " + statusValue + ">" + statusTitle + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= " + data[i].id + "><i class='fas fa-trash-alt'></i> </button></div>");
     }
   });
 
-  //---------Get users saved work-------------------------------------------------
+  /**
+   * Get publsihed works from DB and update HTML to show list.
+   */
   $.get("/api/published_works").then(function (data) {
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       let path = data[i].path.substring(11);
       usersWork.append("<li class= 'published-work-list'><a target='_blank' href='" + path + "'><h5><b>" + data[i].title + "</h5></b><a/>" + " By " + data[i].author);
     }
   });
 
-  //---------Click event for changing a saved books status to 'Read' or 'Unread-----
+  /**
+   * Click event for changing a saved books status to 'Read' or 'Unread'.
+   */
   $(".user-saved-books").on('click', '.btn-savedBooksRead', function () {
-    let id = $(this).attr('name')
-    let userBookStatus = "true";
+    let id = $(this).attr('name'),
+      userBookStatus = "true";
     if ($(this).attr('value') === "true") {
       userBookStatus = "false";
     }
     $.ajax("/api/changeread/" + id, {
       type: "PUT",
-      data: { isRead: userBookStatus }
+      data: { 
+        isRead: userBookStatus 
+      }
     }).then(function (result) {
-      
       location.reload()
     });
   });
 
-  //--------Click event for deleteing a saved book-----------------------------------
+  /**
+   * Click event for deleteing a saved book.
+   */
   $(".user-saved-books").on('click', '.btn-savedBooksDelete', function () {
-    let id = $(this).attr('name')
+    let id = $(this).attr('name');
     $.ajax("/api/delete/" + id, {
       type: "DELETE",
     }).then(function (result) {
@@ -61,12 +82,15 @@ $(document).ready(function () {
     });
   });
 
-  //-----Click event for adding a new book from the search----------------------------
+  /**
+   * Click event for adding a new book from the search.
+   * Sends AJAX get request to a google books API.
+   * No API key required.
+   */
   $(".add-new").click(function () {
     memberList.empty();
     $(".update-database").remove();
     let title = $("#book-name").val();
-    console.log("query = https://www.googleapis.com/books/v1/volumes?q=" + title);
 
     $.ajax({
       url: "https://www.googleapis.com/books/v1/volumes?q=" + title,
@@ -81,11 +105,9 @@ $(document).ready(function () {
           e.preventDefault();
           let thisBookIndex = $("input:Checked").attr("id");
           thisBookIndex = thisBookIndex.replace(/\D/g, ''); //parse to return just the number
-          let newTitle = $("input:checked").val();
-          let author = data.items[thisBookIndex].volumeInfo.authors[0];
+          let newTitle = $("input:checked").val(),
+              author = data.items[thisBookIndex].volumeInfo.authors[0];
           addBook(newTitle, author);
-          $("#title" + thisBookIndex).remove() //now remove those html elements
-          $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
 
           $("#addAlert").html("<div class=\"alert alert-success\" role=\"alert\">Added Successfully!</div>");
         });
@@ -93,16 +115,15 @@ $(document).ready(function () {
     });
   });
 
-  //-----Click event for publishing EPUB work-----------------------------------------
+  /**
+   * Click event for publishing EPUB work.
+   */
   $(".publish").click(function () {
-
-    let title = $(".pubTitle").val();
-    let author = $(".pubAuthor").val();
     //if the counter is 1, it means no chapters have been added, meaning we publish entire body as chapter 1.
     if (counter === 1) {
       body = {
-        title: title,
-        author: author,
+        title: $(".pubTitle").val(),
+        author: $(".pubAuthor").val(),
         data: $(".pubBody").val()
       };
 
@@ -118,9 +139,12 @@ $(document).ready(function () {
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
 
-  //----Click event for adding a chapter to EPUB work--------------------------------
+  /**
+   * Click event for adding a chapter to publsihed works.
+   * Parses string and obtains necessary values via jquery.
+   * Similiar to above listener.
+   */
   $(".addChapter").click(function () {
-
     // obtain chapter information and parse
     body = $(".pubBody").val();
     body = "<p>" + body;
@@ -140,9 +164,13 @@ $(document).ready(function () {
 
     //lastly, increment chapter count
     counter = counter + 1;
-
   });
 
+  /**
+   * used to add a new book to db via API post call
+   * @param title book title as string
+   * @param author book author as string 
+   */
   function addBook(title, author) {
     $.post("/api/addnew", {
       title: title,
@@ -151,6 +179,12 @@ $(document).ready(function () {
     location.reload();
   }
 
+  /**
+   * used to run API post call to publish a new book to database and create epub File.
+   * @param title: book title as string
+   * @param author: book author as string 
+   * @param body: book body as [{}] 
+   */
   function publish(title, author, body) {
     $.post("api/publish", {
       title: title,
