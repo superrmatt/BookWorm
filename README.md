@@ -30,7 +30,7 @@ BookWorm is an easy application to use. Either clone this repository or head to 
 
 ### Problems
 
-Project is still under construction. Therefore, many problems exist. Mainly, publishing to ebook format is not currently available.
+Issues are mostly seen with publishing of books. Book titles must be lowercase at this time, book titles cannot contain any special characters. the file will compile properly, but viewing and reading the published book may not work.
 
 
 ### Technologies

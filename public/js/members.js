@@ -8,7 +8,6 @@ $(document).ready(function () {
   let body;
   let chapters = [];
 
-
   //---------Get users name to display on members page----------------------------
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.userName + "!");
