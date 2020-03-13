@@ -1,3 +1,10 @@
+/**
+  * No longer used (See .eslingignore file for more info).
+  * Easier to ignore all folders than to remove eslint. 
+  * Also kept in case requirements change and ESLint is brought back on the table.
+  * Relic of old functionality.
+  */
+
 {
   "env": {
     "browser": true,
