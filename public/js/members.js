@@ -22,7 +22,7 @@ $(document).ready(function () {
         statusTitle = "Unread"
         statusValue = "true"
       }
-      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[e].title + "</b>By " + data[e].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[e].id + " value= " + statusValue + ">" + statusTitle + "</button><button class= 'btn-primary btn-savedBooksDelete' name= " + data[e].id + "> Delete</button></div>");
+      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[e].title + "</b>By " + data[e].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[e].id + " value= " + statusValue + ">" + statusTitle + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= " + data[e].id + "><i class='fas fa-trash-alt'></i> </button></div>");
 
     }
   });
