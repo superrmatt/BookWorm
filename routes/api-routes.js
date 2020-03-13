@@ -35,8 +35,7 @@ module.exports = function (app) {
         userID: req.user.id,
         title: req.body.title,
         author: req.body.author,
-        isRead: false,
-        image: req.body.image
+        isRead: false
       })
       .then(function () {
         location.reload();

@@ -13,7 +13,6 @@ $(document).ready(function () {
     $(".member-name").text(data.userName + "!");
   });
 
-
   //---------Get users saved books------------------------------------------------
   $.get("/api/user_books").then(function (data) {
     for (var e = 0; e < data.length; e++) {
@@ -28,7 +27,6 @@ $(document).ready(function () {
     }
   });
 
-
   //---------Get users saved work-------------------------------------------------
   $.get("/api/published_works").then(function (data) {
     for (var i = 0; i < data.length; i++) {
@@ -36,7 +34,6 @@ $(document).ready(function () {
       usersWork.append("<li class= 'published-work-list'><a target='_blank' href='" + path + "'><h5><b>" + data[i].title + "</h5></b><a/>" + " By " + data[i].author);
     }
   });
-
 
   //---------Click event for changing a saved books status to 'Read' or 'Unread-----
   $(".user-saved-books").on('click', '.btn-savedBooksRead', function () {
@@ -51,9 +48,8 @@ $(document).ready(function () {
     }).then(function (result) {
       
       location.reload()
-    })
-  })
-
+    });
+  });
 
   //--------Click event for deleteing a saved book-----------------------------------
   $(".user-saved-books").on('click', '.btn-savedBooksDelete', function () {
@@ -64,7 +60,6 @@ $(document).ready(function () {
       location.reload()
     });
   });
-
 
   //-----Click event for adding a new book from the search----------------------------
   $(".add-new").click(function () {
@@ -88,10 +83,7 @@ $(document).ready(function () {
           thisBookIndex = thisBookIndex.replace(/\D/g, ''); //parse to return just the number
           let newTitle = $("input:checked").val();
           let author = data.items[thisBookIndex].volumeInfo.authors[0];
-          let image = data.items[thisBookIndex].volumeInfo.imageLinks.smallThumbnail;
-          console.log(image);
-
-          addBook(newTitle, author, image);
+          addBook(newTitle, author);
           $("#title" + thisBookIndex).remove() //now remove those html elements
           $("#title" + thisBookIndex).remove() //for whatever reason we need to call it twice in order to remove both elements. else it just removes the first instance, aka the input tag
 
@@ -100,7 +92,6 @@ $(document).ready(function () {
       }
     });
   });
-
 
   //-----Click event for publishing EPUB work-----------------------------------------
   $(".publish").click(function () {
@@ -122,7 +113,6 @@ $(document).ready(function () {
     publish(title, author, body);
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
-
 
   //----Click event for adding a chapter from EPUB work--------------------------------
   $(".addChapter").click(function () {
@@ -149,11 +139,10 @@ $(document).ready(function () {
 
   });
 
-  function addBook(title, author, image) {
+  function addBook(title, author) {
     $.post("/api/addnew", {
       title: title,
-      author: author,
-      image: image
+      author: author
     });
     location.reload();
   }
