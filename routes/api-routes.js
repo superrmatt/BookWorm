@@ -130,13 +130,10 @@ module.exports = function (app) {
    * When called, creates entry in DB and then creates the epub file.
    * Parses the link so as to avoid bugs.
    * BUG: since DB entry created first, if EPUB fails we now have a reference to a publsihed book that does not exist on server filesystem.
-   * TODO: - parse link
-   *       - Allow cover images for both the book and the chapters, requires front end manipulation as well.
    */
   app.post("/api/publish", function (req, res) {
-    let parsedTitle = req.body.title;
-    parsedTitle = parsedTitle.replace(/ /g,"_"); //replace any space with underscores for filename, else cannot open files
-    let filePath = "../BookWorm/public/publishedWorks/" + parsedTitle + ".epub";
+    let parsedTitle = parseEpubPath(req.body.title),
+        filePath = "../BookWorm/public/publishedWorks/" + parsedTitle + ".epub";
     db.publishedWork.create({
         title: req.body.title,
         author: req.body.author,
@@ -169,4 +166,22 @@ module.exports = function (app) {
       res.status(401).json(err);
     });
   });
+
+  /**
+   * Parses the title of each epub book to allow for filesystem browsing.
+   * @param path The title of the book as string.
+   * @return The title parsed to allow for viewing the ebook.
+   */
+  function parseEpubPath(path){
+    path = path.replace(/ /g,"_");
+    path = path.replace(/'/g, "&single"); 
+    path = path.replace(/"/g, "&double");
+    path = path.replace(/`/g, "&backtick");
+    path = path.replace(/[/]/g, "&forwardSlash"); 
+    path = path.replace(/\\/g, "&backslash");
+    path = path.replace(/[|]/g, "&pipe");
+    path = path.replace(/[?]/g, "&question");
+    path = path.replace(/[*]/g, "&asterisk");
+    return path;
+  }
 };
