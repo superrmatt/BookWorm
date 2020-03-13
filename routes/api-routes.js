@@ -134,7 +134,9 @@ module.exports = function (app) {
    *       - Allow cover images for both the book and the chapters, requires front end manipulation as well.
    */
   app.post("/api/publish", function (req, res) {
-    let filePath = "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
+    let parsedTitle = req.body.title;
+    parsedTitle = parsedTitle.replace(/ /g,"_"); //replace any space with underscores for filename, else cannot open files
+    let filePath = "../BookWorm/public/publishedWorks/" + parsedTitle + ".epub";
     db.publishedWork.create({
         title: req.body.title,
         author: req.body.author,
