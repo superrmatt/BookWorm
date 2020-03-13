@@ -1,7 +1,8 @@
 form.signup, form.login {  margin-top: 50px;
 } 
 
-body { opacity: 95%;
+body {  opacity: 95%;
+        font-family: 'Inter', sans-serif;
 }
 
 #backgroundWrapper {  background-image: url("images/library.jpg");
@@ -51,9 +52,6 @@ a:hover { color: rgb(56, 29, 56);
         width: 100%;
 }
 
-.card-header { font-family:'Shadows Into Light', cursive;
-}
-
 .input-group {  background-color: rgb(248, 243, 236);
 }
 
@@ -80,22 +78,18 @@ a:hover { color: rgb(56, 29, 56);
                       background-repeat: no-repeat;
                       width: 100vw;
                       height: 100vh;
-                      font-family: 'Libre Franklin', sans-serif;
 }
 
 .btn {  margin:5px;
 }
 
-h1 { font-family:'Shadows Into Light', cursive;
-}
 
 .navbar-brand {   color: white;
 }
 
 .add-new {  padding: 5px;
             border-radius: 7px;
-            background-color: rgb(252, 125, 7);
-            border-color: rgb(252, 125, 7);
+         
             margin:10px;
             color: white;
 }
@@ -105,23 +99,22 @@ h1 { font-family:'Shadows Into Light', cursive;
 
 .update-database {  padding: 7px;
                     border-radius: 7px;
-                    background-color: rgb(233, 90, 233);
-                    border-color:rgb(233, 90, 233);
+                   
                     margin:10px;
-                    color: white;
+                    
 }
 
 .addCoverImage {  margin-top: 20px;
 }
 
 .addChapter { text-align:center;
-              background-color: rgb(252, 125, 7);
-              border-color: rgb(252, 125, 7);
-              color: white;
               padding: 5px;
               border-radius: 7px;
               margin: 10px;
               float: right;
+              background-color: rgb(233, 90, 233);
+              border-color:rgb(233, 90, 233);
+              color: white;
 }
   
 .publish {  background-color: rgb(233, 90, 233);
@@ -138,28 +131,26 @@ h1 { font-family:'Shadows Into Light', cursive;
               margin: 10px;
 }
 
-h2 {  font-family:'Shadows Into Light', cursive;
-      font-size: 50pt;
+h2 {  font-size:40pt;
 }
 
-.btn-savedBooksRead{
-  border-style: solid;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-width: 1px;
-  border-color: #dddddd;
-}
-
-.btn-savedBooksDelete{
-                      border-style: solid;
-                      border-top-right-radius: 5px;
-                      border-bottom-right-radius: 5px;
+.btn-savedBooksRead { border-style: solid;
+                      border-top-left-radius: 5px;
+                      border-bottom-left-radius: 5px;
                       border-width: 1px;
                       border-color: #dddddd;
 }
-.user-saved-books{
-  padding: 0;
+
+.btn-savedBooksDelete { border-style: solid;
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                        border-width: 1px;
+                        border-color: #dddddd;
 }
+
+.user-saved-books { padding: 0;
+}
+
 .books-list-item{
   text-align: center;
   align-items: center;
@@ -179,4 +170,20 @@ h2 {  font-family:'Shadows Into Light', cursive;
 .card-header{
    background-color: rgb(236, 235, 235);
 
+}
+
+.published-work-list{
+    list-style-type:none;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(236, 235, 235);
+    margin: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #dddddd;
+  
 }

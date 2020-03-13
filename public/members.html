@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="stylesheets/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
   </head>
 
 <body id="membersBackground">
@@ -48,7 +47,7 @@
 
         <div class="card bg-light mb-3" style="height:275px;">
           <div class="card-header">
-            <h3>Users Work</h3>
+            <h3>Published Work</h3>
           </div>
           <div class="card-body overflow-auto">
             <div class="usersWork">
@@ -69,7 +68,7 @@
         <div class="new-book-section">
           <div id="addAlert"></div>
           <input type="text" id="book-name">
-          <button class="add-new">Search</button>
+          <button class="btn-primary add-new">Search</button>
         </div>
         <form class="member-list">
 
@@ -77,7 +76,7 @@
 
         <!--------------EPUB ZONE--------------->
         <hr>
-        <label for="basic-url">EPUB</label>
+        <label for="basic-url"><h4>Publish your own work below...</h4></label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Title</span>
@@ -112,12 +111,6 @@
           </div>
           <textarea class="pubBody form-control" aria-label="With textarea"></textarea>
         </div>
-
-        <form class="addCoverImage">
-          <label for="img">Select image:</label>
-          <input type="file" id="img" name="img" accept="image/*"><br>
-          <input class="coverImage" type="submit">
-        </form>
 
         <div id="pubAlert"></div>
 
