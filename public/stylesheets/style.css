@@ -96,7 +96,7 @@ a:hover { color: rgb(56, 29, 56);
 #book-name {  margin: 10px;
 }
 
-.update-database {  padding: 7px;
+.update-database {  padding: 5px;
                     border-radius: 7px;                  
                     margin:10px;         
 }
@@ -132,17 +132,13 @@ h2 {  font-size:40pt;
 }
 
 .btn-savedBooksRead { border-style: solid;
-                      border-top-left-radius: 5px;
-                      border-bottom-left-radius: 5px;
+                      border-radius: 7px;
                       border-width: 1px;
                       border-color: #dddddd;
 }
 
-.btn-savedBooksDelete { border-style: solid;
-                        border-top-right-radius: 5px;
-                        border-bottom-right-radius: 5px;
-                        border-width: 1px;
-                        border-color: #dddddd;
+.btn-savedBooksDelete { border-style: none;
+                        background:transparent;
 }
 
 .user-saved-books { padding: 0;
