@@ -111,7 +111,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/publish", function (req, res) {
-    var filePath =
+    let filePath =
       "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
     db.publishedWork
       .create({
@@ -120,7 +120,7 @@ module.exports = function (app) {
         path: filePath
       })
       .then(function () {
-        var option = {
+        let option = {
           title: req.body.title, // *Required, title of the book.
           author: req.body.author, // *Required, name of the author.
           cover: "../BookWorm/public/stylesheets/images/library.jpg", // Url or File path, both ok, this is a test image.
