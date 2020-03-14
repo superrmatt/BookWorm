@@ -10,14 +10,14 @@ body {
 #backgroundWrapper {  
   background-image: url("images/library.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
 }
 
 #loginDiv.container {   
   border-radius: 7px;
-  margin-top: 100px;
+  margin-top: 8%;
+  margin-bottom: 8%;
   width: 400px;
   min-height: 300px;
   background-color: rgb(236, 235, 235);
@@ -26,7 +26,8 @@ body {
 
 #signUpDiv.container {  
   border-radius: 7px;
-  margin-top: 100px;
+  margin-top: 8%;
+  margin-bottom: 8%;
   width: 400px;
   min-height: 300px;
   background-color: rgb(236, 235, 235);
@@ -60,6 +61,8 @@ a:hover {
 .card { 
   box-shadow: 5px 4px 8px gray;
   width: 100%;
+  height: 279px;
+  margin-bottom:5%;
 }
 
 .input-group {  
@@ -91,9 +94,9 @@ a:hover {
 #membersBackground {  
   background-image: url("images/library.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
+  margin-bottom:5%;
 }
 
 .btn {  
@@ -173,38 +176,43 @@ h2 {
   padding: 0;
 }
 
-.books-list-item{
-  text-align: center;
-  align-items: center;
-  background-color: rgb(236, 235, 235);
-  margin: 5px;
-  padding: 5px;
-  border-style: solid;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: #dddddd;
+.books-list-item{ text-align: center;
+                  align-items: center;
+                  background-color: rgb(236, 235, 235);
+                  margin: 5px;
+                  padding: 7px;
+                  border-style: solid;
+                  border-top-right-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                  border-radius: 5px;
+                  border-width: 1px;
+                  border-color: #dddddd;
 }
-.card-body{
-  padding: .25rem;
+.card-body{ padding: .25rem;
 }
-.card-header{
-  background-color: rgb(236, 235, 235);
+
+.card-header{ background-color: rgb(236, 235, 235);
 
 }
 
-.published-work-list{
-  list-style-type:none;
-  text-align: center;
-  align-items: center;
-  background-color: rgb(236, 235, 235);
-  margin: 5px;
-  padding: 5px;
-  border-style: solid;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: #dddddd;
+.published-work-list{ list-style-type:none;
+                      text-align: center;
+                      align-items: center;
+                      background-color: rgb(236, 235, 235);
+                      margin: 5px;
+                      padding: 5px;
+                      border-style: solid;
+                      border-top-right-radius: 5px;
+                      border-bottom-right-radius: 5px;
+                      border-radius: 5px;
+                      border-width: 1px;
+                      border-color: #dddddd;
+  
+}
+
+.author { font-size: 11pt;
+ }
+
+ .description { font-size: 8pt;
+                color: teal;
 }

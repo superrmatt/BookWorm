@@ -4,9 +4,9 @@ $(document).ready(function () {
    * JQuery variables used to hold reference throughout this code.
    */
   let memberList = $(".member-list"),
-      newBookSection = $(".new-book-section"),
-      userBooks = $(".user-saved-books"),
-      usersWork = $(".savedWorkList");
+    newBookSection = $(".new-book-section"),
+    userBooks = $(".user-saved-books"),
+    usersWork = $(".savedWorkList");
 
   /**
    * Variables to track values for EPUB.
@@ -15,8 +15,8 @@ $(document).ready(function () {
    * Chapters, array of body object (body is manipulated into an object in the publish and add-chapter listeners).
    */
   let counter = 1, //this variable will track how many chapters for each book.
-      body,
-      chapters = [];
+    body,
+    chapters = [];
 
   /**
    * Get user's name to display on members page.
@@ -30,14 +30,21 @@ $(document).ready(function () {
    * Get logged in user's saved books and updates HTML.
    */
   $.get("/api/user_books").then(function (data) {
-    for (let i = 0; i < data.length; i++) {
+    for (let e = 0; e < data.length; e++) {
       let statusTitle = "Read",
-          statusValue = "false";
-      if (data[i].isRead === true) {
+        statusValue = "false";
+      if (data[e].isRead === true) {
         statusTitle = "Unread"
         statusValue = "true"
       }
-      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[i].title + "</b>By " + data[i].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[i].id + " value= " + statusValue + ">" + statusTitle + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= " + data[i].id + "><i class='fas fa-trash-alt'></i> </button></div>");
+
+      userBooks.append("<li class= 'list-group books-list-item'><b>"
+        + data[e].title + "</b><p class='author'>By "
+        + data[e].author + "</p><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= "
+        + data[e].id + " value= " + statusValue + ">" + statusTitle
+        + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= "
+        + data[e].id + "><i class='fas fa-trash-alt'></i></button></div>");
+
     }
   });
 
@@ -47,7 +54,7 @@ $(document).ready(function () {
   $.get("/api/published_works").then(function (data) {
     for (let i = 0; i < data.length; i++) {
       let path = data[i].path.substring(11);
-      usersWork.append("<li class= 'published-work-list'><a target='_blank' href='" + path + "'><h5><b>" + data[i].title + "</h5></b><a/>" + " By " + data[i].author);
+      usersWork.append("<li class= 'published-work-list'><a target='_blank' href='" + path + "'><h5><b>" + data[i].title + "</h5></b><a/><p class='author'> By " + data[i].author);
     }
   });
 
@@ -62,8 +69,8 @@ $(document).ready(function () {
     }
     $.ajax("/api/changeread/" + id, {
       type: "PUT",
-      data: { 
-        isRead: userBookStatus 
+      data: {
+        isRead: userBookStatus
       }
     }).then(function (result) {
       location.reload()
@@ -97,7 +104,13 @@ $(document).ready(function () {
       method: "GET",
       success: function (data) {
         for (let i = 0; i < data.items.length; i++) {
-          memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+          // memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+          memberList.append("<input value=\"" + data.items[i].volumeInfo.title +
+            "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"> <b><label id=\"title"
+            + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title
+            + "\">" + data.items[i].volumeInfo.title + "</label></b><br><p class='author'> By "
+            + data.items[i].volumeInfo.authors + "</p><p class='description'>" + data.items[i].volumeInfo.description + "</p>");
+
         }
         newBookSection.append("<button class=\"update-database\" onclick=\"setTimeout(addTimeout, 3000)\">Add Selected</button>");
 
@@ -106,7 +119,7 @@ $(document).ready(function () {
           let thisBookIndex = $("input:Checked").attr("id");
           thisBookIndex = thisBookIndex.replace(/\D/g, ''); //parse to return just the number
           let newTitle = $("input:checked").val(),
-              author = data.items[thisBookIndex].volumeInfo.authors[0];
+            author = data.items[thisBookIndex].volumeInfo.authors[0];
           addBook(newTitle, author);
 
           $("#addAlert").html("<div class=\"alert alert-success\" role=\"alert\">Added Successfully!</div>");
@@ -120,7 +133,7 @@ $(document).ready(function () {
    */
   $(".publish").click(function () {
     let title = $(".pubTitle").val(),
-        author = $(".pubAuthor").val();
+      author = $(".pubAuthor").val();
     //if the counter is 1, it means no chapters have been added, meaning we publish entire body as chapter 1.
     if (counter === 1) {
       body = {
