@@ -27,13 +27,11 @@ $(document).ready(function() {
     $.post("/api/login", {
       email: email,
       password: password
-    })
-      .then(function() {
+    }).then(function() {
         window.location.replace("/members");
-        // If there's an error, log the error
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
   }
 });

@@ -9,7 +9,7 @@ Deployed to: https://bookwormlibrary.herokuapp.com/
 ## Table of Contents
 1. [Concept](https://github.com/superrmatt/BookWorm#concept)
 2. [Walkthrough](https://github.com/superrmatt/BookWorm#walkthrough)
-3. [Problems](https://github.com/superrmatt/BookWorm#problems)
+3. [Future Updates](https://github.com/superrmatt/BookWorm#future-updates)
 4. [Technologies](https://github.com/superrmatt/BookWorm#technologies)
 4. [Contributors](https://github.com/superrmatt/BookWorm#contributors)
 
@@ -28,9 +28,16 @@ BookWorm is an easy application to use. Either clone this repository or head to 
 4. A book can be added to user wishlist by the search functionality. Books can be marked read by user.
 5. Functionality in progress: publishing one's own work. Upates to come as functionality appears.
 
-### Problems
+### Future Updates
 
-Issues are mostly seen with publishing of books. Book titles must be lowercase at this time, book titles cannot contain any special characters. the file will compile properly, but viewing and reading the published book may not work.
+1. Book lists:
+   - Show cover image on list. 
+   - Allow user to access ebook (or purchase of ebook).
+   - Show user suggested new books based on current list or genre/author specifications.
+2. Publishing: 
+   - Allow users to manage their published works: delete, edit, etc
+3. Social media aspect. (let your imagination run wild to see the potential functions).
+
 
 
 ### Technologies
