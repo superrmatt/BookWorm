@@ -139,7 +139,7 @@ $(document).ready(function () {
     }
     body = chapters;
 
-    console.log("4")
+    console.log("4");
     publish(title, author, body);
     console.log("5");
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
