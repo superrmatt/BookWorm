@@ -119,18 +119,16 @@ $(document).ready(function () {
    * Click event for publishing EPUB work.
    */
   $(".publish").click(function () {
-    console.log("1");
     let title = $(".pubTitle").val(),
         author = $(".pubAuthor").val();
     //if the counter is 1, it means no chapters have been added, meaning we publish entire body as chapter 1.
-    console.log("2");
     if (counter === 1) {
       body = {
         title: title,
         author: author,
         data: $(".pubBody").val()
       };
-      console.log("3");
+
       //parse body string to start with paragraph, replace all isntances of 'enter;' with a new paragraph block and end with end paragraph block
       body.body = "<p>" + body.body;
       body.body = body.body.replace(/(?:\r\n|\r|\n)/g, '</p><p>');
@@ -139,9 +137,7 @@ $(document).ready(function () {
     }
     body = chapters;
 
-    console.log("4");
     publish(title, author, body);
-    console.log("5");
     $("#pubAlert").html("<div class=\"alert alert-success\" role=\"alert\">Published Successfully!</div>");
   });
 
