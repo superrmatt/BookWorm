@@ -144,39 +144,43 @@ h2 {  font-size:40pt;
 .user-saved-books { padding: 0;
 }
 
-.books-list-item{
-  text-align: center;
-  align-items: center;
-  background-color: rgb(236, 235, 235);
-  margin: 5px;
-  padding: 5px;
-  border-style: solid;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: #dddddd;
+.books-list-item{ text-align: center;
+                  align-items: center;
+                  background-color: rgb(236, 235, 235);
+                  margin: 5px;
+                  padding: 7px;
+                  border-style: solid;
+                  border-top-right-radius: 5px;
+                  border-bottom-right-radius: 5px;
+                  border-radius: 5px;
+                  border-width: 1px;
+                  border-color: #dddddd;
 }
-.card-body{
-  padding: .25rem;
+.card-body{ padding: .25rem;
 }
-.card-header{
-   background-color: rgb(236, 235, 235);
+
+.card-header{ background-color: rgb(236, 235, 235);
 
 }
 
-.published-work-list{
-    list-style-type:none;
-    text-align: center;
-    align-items: center;
-    background-color: rgb(236, 235, 235);
-    margin: 5px;
-    padding: 5px;
-    border-style: solid;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-radius: 5px;
-    border-width: 1px;
-    border-color: #dddddd;
+.published-work-list{ list-style-type:none;
+                      text-align: center;
+                      align-items: center;
+                      background-color: rgb(236, 235, 235);
+                      margin: 5px;
+                      padding: 5px;
+                      border-style: solid;
+                      border-top-right-radius: 5px;
+                      border-bottom-right-radius: 5px;
+                      border-radius: 5px;
+                      border-width: 1px;
+                      border-color: #dddddd;
   
+}
+
+.author { font-size: 11pt;
+ }
+
+ .description { font-size: 8pt;
+                color: teal;
 }

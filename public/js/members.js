@@ -22,7 +22,7 @@ $(document).ready(function () {
         statusTitle = "Unread"
         statusValue = "true"
       }
-      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[e].title + "</b>By " + data[e].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[e].id + " value= " + statusValue + ">" + statusTitle + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= " + data[e].id + "><i class='fas fa-trash-alt'></i> </button></div>");
+      userBooks.append("<li class= 'list-group books-list-item'><b>" + data[e].title + "</b><p class='author'>By " + data[e].author + "<br><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= " + data[e].id + " value= " + statusValue + ">" + statusTitle + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= " + data[e].id + "><i class='fas fa-trash-alt'></i> </button></div>");
 
     }
   });
@@ -31,7 +31,7 @@ $(document).ready(function () {
   $.get("/api/published_works").then(function (data) {
     for (var i = 0; i < data.length; i++) {
       let path = data[i].path.substring(11);
-      usersWork.append("<li class= 'published-work-list'><a target='_blank' href='" + path + "'><h5><b>" + data[i].title + "</h5></b><a/>" + " By " + data[i].author);
+      usersWork.append("<li class= 'published-work-list'><a target='_blank' href='" + path + "'><h5><b>" + data[i].title + "</h5></b><a/><p class='author'> By " + data[i].author);
     }
   });
 
@@ -73,7 +73,13 @@ $(document).ready(function () {
       method: "GET",
       success: function (data) {
         for (let i = 0; i < data.items.length; i++) {
-          memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+          // memberList.append("<input value=\"" + data.items[i].volumeInfo.title + "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"><label id=\"title" + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title + "\">" + data.items[i].volumeInfo.title + "</label><br>");
+          memberList.append("<input value=\"" + data.items[i].volumeInfo.title + 
+          "\" type=\"radio\" name=\"book\" id=\"title" + i + "\"> <b><label id=\"title" 
+          + i + "\" for=\"title" + i + "\" value=\"" + data.items[i].volumeInfo.title 
+          + "\">" + data.items[i].volumeInfo.title + "</label></b><br><p class='author'> By " 
+          + data.items[i].volumeInfo.authors + "</p><p class='description'>" + data.items[i].volumeInfo.description + "</p>");
+        
         }
         newBookSection.append("<button class=\"update-database\" onclick=\"setTimeout(addTimeout, 3000)\">Add Selected</button>");
 
