@@ -132,8 +132,8 @@ module.exports = function (app) {
    * BUG: since DB entry created first, if EPUB fails we now have a reference to a publsihed book that does not exist on server filesystem.
    */
   app.post("/api/publish", function (req, res) {
-    let parsedTitle = parseEpubPath(req.body.title),
-        filePath = "../BookWorm/public/publishedWorks/" + parsedTitle + ".epub";
+   // let parsedTitle = parseEpubPath(req.body.title),
+     let   filePath = "../BookWorm/public/publishedWorks/" + req.body.title + ".epub";
     db.publishedWork.create({
         title: req.body.title,
         author: req.body.author,
