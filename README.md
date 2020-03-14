@@ -9,7 +9,7 @@ Deployed to: https://bookwormlibrary.herokuapp.com/
 ## Table of Contents
 1. [Concept](https://github.com/superrmatt/BookWorm#concept)
 2. [Walkthrough](https://github.com/superrmatt/BookWorm#walkthrough)
-3. [Future Updates](https://github.com/superrmatt/BookWorm#future_updates)
+3. [Future Updates](https://github.com/superrmatt/BookWorm#future-updates)
 4. [Technologies](https://github.com/superrmatt/BookWorm#technologies)
 4. [Contributors](https://github.com/superrmatt/BookWorm#contributors)
 
@@ -30,6 +30,13 @@ BookWorm is an easy application to use. Either clone this repository or head to 
 
 ### Future Updates
 
+1. Book lists:
+   - Show cover image on list. 
+   - Allow user to access ebook (or purchase of ebook).
+   - Show user suggested new books based on current list or genre/author specifications.
+2. Publishing: 
+   - Allow users to manage their published works: delete, edit, etc
+3. Social media aspect. (let your imagination run wild to see the potential functions).
 
 
 
