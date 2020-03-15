@@ -133,7 +133,7 @@ module.exports = function (app) {
    */
   app.post("/api/publish", function (req, res) {
     let parsedTitle = parseEpubPath(req.body.title),
-        filePath = "../BookWorm/public/publishedWorks/" + path + ".epub";
+        filePath = "../BookWorm/public/publishedWorks/" + parsedTitle + ".epub";
     db.publishedWork.create({
         title: req.body.title,
         author: req.body.author,
