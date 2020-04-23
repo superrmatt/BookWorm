@@ -40,9 +40,9 @@ $(document).ready(function () {
 
       userBooks.append("<li class= 'list-group books-list-item'><b>"
         + data[e].title + "</b><p class='author'>By "
-        + data[e].author + "</p><div class= 'btn-group'><button class= 'btn-primary btn-savedBooksRead' name= "
+        + data[e].author + "</p><div class= 'btn-group'><button class= 'btn-primary savedBooksRead' name= "
         + data[e].id + " value= " + statusValue + ">" + statusTitle
-        + " <i class='fas fa-book-open'></i></button><button class= 'btn-savedBooksDelete' name= "
+        + " <i class='fas fa-book-open'></i></button><button class= 'savedBooksDelete' name= "
         + data[e].id + "><i class='fas fa-trash-alt'></i></button></div>");
 
     }

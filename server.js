@@ -3,6 +3,8 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport"); //testing testing
+// Requiring compression to compression js files
+var compression = require("compression");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -13,6 +15,9 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+// compress all responses
+app.use(compression());
 
 // We need to use sessions to keep track of our user's login status
 app.use(

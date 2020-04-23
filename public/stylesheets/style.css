@@ -160,14 +160,14 @@ h2 {
   font-size:40pt;
 }
 
-.btn-savedBooksRead { 
+.savedBooksRead { 
   border-style: solid;
   border-radius: 7px;
   border-width: 1px;
   border-color: #dddddd;
 }
 
-.btn-savedBooksDelete { 
+.savedBooksDelete { 
   border-style: none;
   background:transparent;
 }
